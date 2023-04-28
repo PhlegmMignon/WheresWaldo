@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
+import Start from "./components/Start";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -16,6 +17,9 @@ export default function App() {
   const config = getFirebaseConfig();
   const app = initializeApp(config);
 
+  // const [offset, setOffset] = useState(0);
+  //offset={offset} setOffset={setOffset}
+
   return (
     <>
       <div className="App">
@@ -26,10 +30,7 @@ export default function App() {
           element={
             <Cart
               cart={cart}
-              setCart={setCart}
-              shop={items}
-              cartItems={cartItems}
-              setCartItems={setCartItems}
+            
             />
           }
         />
@@ -45,7 +46,7 @@ export default function App() {
             />
           }
         /> */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Start />} />
         </Routes>
       </div>
     </>
