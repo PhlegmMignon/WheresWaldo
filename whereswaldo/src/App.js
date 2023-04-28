@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import Start from "./components/Start";
+import Image from "./components/Image";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -17,8 +18,17 @@ export default function App() {
   const config = getFirebaseConfig();
   const app = initializeApp(config);
 
-  // const [offset, setOffset] = useState(0);
-  //offset={offset} setOffset={setOffset}
+  const [gameStart, setGameStart] = useState(false);
+  let checkInterval = setInterval(() => {
+    if (gameStart) return true;
+  }, 100);
+
+  //Unmounts start when start is clicked
+  useEffect(() => {
+    if (gameStart) {
+      clearInterval(checkInterval);
+    }
+  }, [gameStart]);
 
   return (
     <>
@@ -46,7 +56,8 @@ export default function App() {
             />
           }
         /> */}
-          <Route path="/" element={<Start />} />
+          <Route path="/" element={<Start setGameStart={setGameStart} />} />
+          <Route path="/image" element={<Image />} />
         </Routes>
       </div>
     </>
