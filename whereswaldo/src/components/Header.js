@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div id="header">
       <div id="container">
@@ -13,6 +13,7 @@ export default function Header() {
         <div id="found2"></div>
         <div id="found3"></div>
       </div>
+      {props.timer}
     </div>
   );
 }

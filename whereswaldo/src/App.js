@@ -4,6 +4,8 @@ import "./App.css";
 import Home from "./components/Home";
 import Start from "./components/Start";
 import Image from "./components/Image";
+import Header from "./components/Header";
+import Timer from "./components/Timer";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -17,6 +19,8 @@ import { getFirebaseConfig } from "./firebase-config.js";
 export default function App() {
   const config = getFirebaseConfig();
   const app = initializeApp(config);
+
+  const [ms, setMs] = useState("");
 
   const [gameStart, setGameStart] = useState(false);
   let checkInterval = setInterval(() => {
@@ -33,7 +37,7 @@ export default function App() {
   return (
     <>
       <div className="App">
-        {/* <Navbar cart={cart} /> */}
+        <Header timer={<Timer ms={ms} />} />
         <Routes>
           {/* <Route
           path="/cart"
@@ -56,7 +60,12 @@ export default function App() {
             />
           }
         /> */}
-          <Route path="/" element={<Start setGameStart={setGameStart} />} />
+          <Route
+            path="/"
+            element={
+              <Start setGameStart={setGameStart} ms={ms} setMs={setMs} />
+            }
+          />
           <Route path="/image" element={<Image />} />
         </Routes>
       </div>

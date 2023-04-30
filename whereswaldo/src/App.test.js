@@ -25,5 +25,19 @@ test("Unmounts Start", async () => {
   await userEvent.click(btn);
 
   expect(btn).not.toBeInTheDocument();
-  //
+});
+
+
+test("Timer works", async () => {
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+
+  let btn = screen.getByText("Start");
+  expect(btn).toBeInTheDocument();
+  await userEvent.click(btn);
+
+  expect(btn).not.toBeInTheDocument();
 });

@@ -2,25 +2,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Start(props) {
-  const [startTime, setStartTime] = useState(0);
-  const [ms, setMs] = useState("");
   const [timer, setTimer] = useState(0);
 
+  let startTime;
   let interval;
 
   const handleClick = () => {
     startTimer();
   };
 
-  const updateTimer = () => {
-    setMs(Date.now() - startTime);
-    console.log(ms);
+  const updateTimer = async () => {
+    props.setMs(Date.now() - startTime);
   };
 
   const startTimer = () => {
     props.setGameStart(true);
-    setStartTime(Date.now());
-
+    startTime = Date.now();
     interval = setInterval(updateTimer, 1000);
   };
 
