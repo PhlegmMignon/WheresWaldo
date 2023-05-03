@@ -6,7 +6,11 @@ export default function Timer(props) {
   let time;
 
   if (Math.round(props.ms / 1000) < 60) {
-    return <div id="timer1">{Math.round(props.ms / 1000)}s</div>;
+    return (
+      <div data-testid="testTimer1" id="timer1">
+        {Math.round(props.ms / 1000)}s
+      </div>
+    );
   } else {
     let mins = Math.trunc(Math.round(props.ms / 1000) / 60);
     let secs = Math.round(props.ms / 1000) % 60;

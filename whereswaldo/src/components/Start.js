@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Start(props) {
+  useEffect(() => {
+    if (props.numFound == 3) endTimer();
+  }, [props.numFound]);
+
   const [timer, setTimer] = useState(0);
 
   let startTime;

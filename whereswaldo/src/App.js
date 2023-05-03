@@ -21,6 +21,7 @@ export default function App() {
   const app = initializeApp(config);
 
   const [ms, setMs] = useState("");
+  const [numFound, setNumFound] = useState(0);
 
   const [gameStart, setGameStart] = useState(false);
   let checkInterval = setInterval(() => {
@@ -53,17 +54,19 @@ export default function App() {
           element={
             <Shop
               setItems={setItems}
-              items={items}
-              setCart={setCart}
-              cart={cart}
-              lengthRef={lengthRef}
+              
             />
           }
         /> */}
           <Route
             path="/"
             element={
-              <Start setGameStart={setGameStart} ms={ms} setMs={setMs} />
+              <Start
+                setGameStart={setGameStart}
+                ms={ms}
+                setMs={setMs}
+                numFound={numFound}
+              />
             }
           />
           <Route path="/image" element={<Image />} />
@@ -78,7 +81,6 @@ export default function App() {
 
 //Header contains 3 chars
 //Have start btn component that loads the image
-//    Start timer when start btn is clicked.
 //    When last char is found, end timer is called
 
 //Main contains section with image
