@@ -16,6 +16,7 @@ export default function Start(props) {
   };
 
   const updateTimer = async () => {
+    console.log("update");
     props.setMs(Date.now() - startTime);
   };
 
