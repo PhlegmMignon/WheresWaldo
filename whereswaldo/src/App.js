@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import Start from "./components/Start";
-import Image from "./components/Image";
+import Main from "./components/Main";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
 import { initializeApp } from "firebase/app";
@@ -69,7 +69,7 @@ export default function App() {
               />
             }
           />
-          <Route path="/image" element={<Image />} />
+          <Route path="/image" element={<Main setNumFound={setNumFound} />} />
         </Routes>
       </div>
     </>
