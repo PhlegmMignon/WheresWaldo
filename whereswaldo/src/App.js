@@ -79,7 +79,6 @@ export default function App() {
 //Figure out what fxs you need to make sure firebase loads
 //Add sign in btn and see if you can call the fx
 
-//Header contains 3 chars
 //Have start btn component that loads the image
 //    When last char is found, end timer is called
 

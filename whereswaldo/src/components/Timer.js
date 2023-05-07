@@ -3,8 +3,6 @@ import React, { useEffect } from "react";
 export default function Timer(props) {
   useEffect(() => {}, [props.ms]);
 
-  let time;
-
   if (Math.round(props.ms / 1000) < 60) {
     return (
       <div data-testid="testTimer1" id="timer1">

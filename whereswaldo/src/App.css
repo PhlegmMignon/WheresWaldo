@@ -2,7 +2,8 @@ html,
 body,
 #root,
 .App {
-  height: 100%;
+  min-width: 100%;
+  width: auto;
 }
 
 .App {
@@ -16,10 +17,40 @@ body,
   align-items: center;
 }
 
+#header {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: end;
+}
+
 #container {
   display: flex;
   justify-content: center;
+  gap: 15px;
+}
+
+.charBox {
+  display: flex;
+  flex-direction: column;
+}
+
+#timer1,
+#timer2 {
+  display: flex;
+  text-align: end;
+  font-size: 2rem;
+}
+
+img {
   height: 150px;
+}
+
+#main {
+  height: 10%;
+}
+#mainImg {
+  height: 10%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

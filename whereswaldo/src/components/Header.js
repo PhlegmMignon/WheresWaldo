@@ -7,15 +7,24 @@ export default function Header(props) {
   return (
     <div id="header">
       <div id="container">
-        <img src={luffy} id="luffy"></img>
-        <img src={kon} id="kon"></img>
-        <img src={zim} id="zim"></img>
+        <div id="luffyBox" className="charBox">
+          <img src={luffy} id="luffy" alt="Luffy"></img>
+          <div>Luffy</div>
+        </div>
+        <div id="konBox" className="charBox">
+          <img src={kon} id="kon" alt="Kon"></img>
+          <div>Kon</div>
+        </div>
+        <div id="zimBox" className="charBox">
+          <img src={zim} id="zim" alt="Zim"></img>
+          <div>Zim</div>
+        </div>
       </div>
-      <div id="found?">
+      {/* <div id="found?">
         <div id="found1"></div>
         <div id="found2"></div>
         <div id="found3"></div>
-      </div>
+      </div> */}
       {props.timer}
     </div>
   );
