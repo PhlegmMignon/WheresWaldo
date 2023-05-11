@@ -50,6 +50,27 @@ import App from "./App";
 
 // });
 
+test("Char drop down appears/disappears on click", async () => {
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+
+  let btn = screen.getByText("Start");
+  expect(btn).toBeInTheDocument();
+  await userEvent.click(btn);
+
+  let image = await screen.findByTestId("mainImg");
+  await userEvent.click(image);
+
+  let ele = await screen.findByTestId("charDropdown");
+  expect(ele).toBeInTheDocument();
+
+  await userEvent.click(image);
+  expect(ele).not.toBeInTheDocument();
+});
+
 //Use backup above if this doesn't work
 //Come back when you can stop the timer so you can stop the act errors
 // test("ms gets updated every second", async () => {

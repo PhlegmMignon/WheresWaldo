@@ -3,7 +3,7 @@ import React from "react";
 export default function CharDropdown(props) {
   if (props.dropdownOpen == true)
     return (
-      <div id="charDropdown">
+      <div id="charDropdown" data-testid="charDropdown">
         <div className="charDrop" id="luffyDrop">
           Luffy
         </div>

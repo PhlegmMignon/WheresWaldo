@@ -12,8 +12,8 @@ export default function Main(props) {
   return (
     <div id="main">
       {/* <img src={mainImg} id="mainImg" alt="Where's waldo board" /> */}
-      <div onClick={handleClick} id="mainImg">
-        <CharDropdown dropdownOpen={props.dropdownOpen} />
+      <div onClick={handleClick} id="mainImg" data-testid="mainImg">
+        {<CharDropdown dropdownOpen={props.dropdownOpen} />}
       </div>
     </div>
   );
