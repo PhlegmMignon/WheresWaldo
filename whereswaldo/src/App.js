@@ -20,6 +20,7 @@ export default function App() {
   const config = getFirebaseConfig();
   const app = initializeApp(config);
 
+  //Timer states
   const [ms, setMs] = useState("");
   const [numFound, setNumFound] = useState(0);
 
@@ -34,6 +35,9 @@ export default function App() {
       clearInterval(checkInterval);
     }
   }, [gameStart]);
+
+  //Dropdown states
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <>
@@ -69,7 +73,16 @@ export default function App() {
               />
             }
           />
-          <Route path="/image" element={<Main setNumFound={setNumFound} />} />
+          <Route
+            path="/image"
+            element={
+              <Main
+                dropdownOpen={dropdownOpen}
+                setDropdownOpen={setDropdownOpen}
+                setNumFound={setNumFound}
+              />
+            }
+          />
         </Routes>
       </div>
     </>
@@ -82,7 +95,6 @@ export default function App() {
 //Have start btn component that loads the image
 //    When last char is found, end timer is called
 
-//Main contains section with image
 // Image has its own div where you can click on it. Onchange fx checks if modal is open.
 //           If oepn close modal
 //Click shows the modal with dropdown box and targetting circle
