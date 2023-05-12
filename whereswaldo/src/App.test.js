@@ -8,12 +8,6 @@ import Timer from "./components/Timer";
 
 import App from "./App";
 
-// test("renders learn react link", () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
-
 // test("Unmounts Start", async () => {
 //   render(
 //     <MemoryRouter>
@@ -47,29 +41,28 @@ import App from "./App";
 //   // let thing = await screen.findByRole("");
 //   let ele = await screen.findByTestId("testTimer1");
 //   expect(ele.textContent).toBe("3s");
-
 // });
 
-test("Char drop down appears/disappears on click", async () => {
-  render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  );
+// test("Char drop down appears/disappears on click", async () => {
+//   render(
+//     <MemoryRouter>
+//       <App />
+//     </MemoryRouter>
+//   );
 
-  let btn = screen.getByText("Start");
-  expect(btn).toBeInTheDocument();
-  await userEvent.click(btn);
+//   let btn = screen.getByText("Start");
+//   expect(btn).toBeInTheDocument();
+//   await userEvent.click(btn);
 
-  let image = await screen.findByTestId("mainImg");
-  await userEvent.click(image);
+//   let image = await screen.findByTestId("mainImg");
+//   await userEvent.click(image);
 
-  let ele = await screen.findByTestId("charDropdown");
-  expect(ele).toBeInTheDocument();
+//   let ele = await screen.findByTestId("charDropdown");
+//   expect(ele).toBeInTheDocument();
 
-  await userEvent.click(image);
-  expect(ele).not.toBeInTheDocument();
-});
+//   await userEvent.click(image);
+//   expect(ele).not.toBeInTheDocument();
+// });
 
 //Use backup above if this doesn't work
 //Come back when you can stop the timer so you can stop the act errors

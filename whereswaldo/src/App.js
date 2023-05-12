@@ -38,6 +38,7 @@ export default function App() {
 
   //Dropdown states
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [position, setPosition] = useState([0, 0]);
 
   return (
     <>
@@ -77,6 +78,8 @@ export default function App() {
             path="/image"
             element={
               <Main
+                position={position}
+                setPosition={setPosition}
                 dropdownOpen={dropdownOpen}
                 setDropdownOpen={setDropdownOpen}
                 setNumFound={setNumFound}
