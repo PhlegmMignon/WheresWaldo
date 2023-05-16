@@ -18,12 +18,8 @@ export default function Main(props) {
 
   let ele;
   const handleListener = (e) => {
-    let bounds = e.target.getBoundingClientRect();
-    let x = e.clientX - bounds.left;
-    let y = e.clientY - bounds.top;
-
-    console.log(x, y);
-    console.log(isListening);
+    let x = e.pageX;
+    let y = e.pageY;
 
     props.setPosition([x, y]);
   };

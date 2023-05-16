@@ -66,6 +66,7 @@ img {
 }
 
 .charDrop {
+  position: relative;
   height: 33%;
   border-bottom: 1.5px solid grey;
 }

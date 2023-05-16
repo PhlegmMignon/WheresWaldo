@@ -8,8 +8,8 @@ export default function CharDropdown(props) {
         data-testid="charDropdown"
         style={{
           position: "absolute",
-          left: props.position[0],
-          top: props.position[1],
+          left: props.position[0] + "px",
+          top: props.position[1] + "px",
         }}
       >
         <li className="charDrop" id="luffyDrop">
