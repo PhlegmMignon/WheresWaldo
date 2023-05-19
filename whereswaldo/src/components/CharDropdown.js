@@ -1,6 +1,17 @@
 import React from "react";
+import CharVerify from "../CharVerify";
 
 export default function CharDropdown(props) {
+  const handleClick = (name) => {
+    CharVerify(
+      name,
+      props.position,
+      props.setLuffyFound,
+      props.setKonFound,
+      props.setZimFound
+    );
+  };
+
   if (props.dropdownOpen == true)
     return (
       <ul
@@ -12,13 +23,25 @@ export default function CharDropdown(props) {
           top: props.position[1] + "px",
         }}
       >
-        <li className="charDrop" id="luffyDrop">
+        <li
+          onClick={() => handleClick("Luffy")}
+          className="charDrop"
+          id="luffyDrop"
+        >
           Luffy
         </li>
-        <li className="charDrop" id="konDrop">
+        <li
+          onClick={() => handleClick("Kon")}
+          className="charDrop"
+          id="konDrop"
+        >
           Kon
         </li>
-        <li className="charDrop" id="zimDrop">
+        <li
+          onClick={() => handleClick("Zim")}
+          className="charDrop"
+          id="zimDrop"
+        >
           Zim
         </li>
       </ul>

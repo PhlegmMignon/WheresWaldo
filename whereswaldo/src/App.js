@@ -40,6 +40,11 @@ export default function App() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [position, setPosition] = useState([0, 0]);
 
+  //Character found states
+  const [luffyFound, setLuffyFound] = useState(false);
+  const [konFound, setKonFound] = useState(false);
+  const [zimFound, setZimFound] = useState(false);
+
   return (
     <>
       <div className="App">
@@ -83,6 +88,9 @@ export default function App() {
                 dropdownOpen={dropdownOpen}
                 setDropdownOpen={setDropdownOpen}
                 setNumFound={setNumFound}
+                setLuffyFound={setLuffyFound}
+                setKonFound={setKonFound}
+                setZimFound={setZimFound}
               />
             }
           />
@@ -98,10 +106,7 @@ export default function App() {
 //Have start btn component that loads the image
 //    When last char is found, end timer is called
 
-// Image has its own div where you can click on it. Onchange fx checks if modal is open.
-//           If oepn close modal
-//Click shows the modal with dropdown box and targetting circle
-//Save the pointer x y location on click
+//Verification of character
 
 //When a char is found, add found text under it in header
 //If wrong char, have small pop up that fades after 3 secs (sticky property)

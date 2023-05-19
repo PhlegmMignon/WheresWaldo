@@ -19,7 +19,12 @@ export default function Main(props) {
   let ele;
   const handleListener = (e) => {
     let x = e.pageX;
-    let y = e.pageY;
+    let y = e.clientY + window.pageYOffset;
+
+    // console.log(e.clientY);
+    // console.log(window.pageYOffset);
+    console.log("main" + x, y);
+    //pageYOffset, screenY, scrollY,
 
     props.setPosition([x, y]);
   };
@@ -35,8 +40,6 @@ export default function Main(props) {
     props.dropdownOpen
       ? props.setDropdownOpen(false)
       : props.setDropdownOpen(true);
-
-    // setPosition([x, y]);
   };
 
   return (
@@ -47,6 +50,9 @@ export default function Main(props) {
           <CharDropdown
             position={props.position}
             dropdownOpen={props.dropdownOpen}
+            setLuffyFound={props.setLuffyFound}
+            setKonFound={props.setKonFound}
+            setZimFound={props.setZimFound}
           />
         }
       </div>
