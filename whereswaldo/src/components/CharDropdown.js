@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CharVerify from "../CharVerify";
 
 export default function CharDropdown(props) {
+  // useEffect(() => {
+  //   console.log(props.luffyFound);
+  // }, [props.luffyFound]);
+
   const handleClick = (name) => {
-    CharVerify(
-      name,
-      props.position,
-      props.setLuffyFound,
-      props.setKonFound,
-      props.setZimFound
-    );
+    if (name == "Luffy") {
+      if (781 < props.position[0] && props.position[0] < 837) {
+        if (1429 < props.position[1] && props.position[1] < 1531) {
+          console.log("found Luffy");
+          props.setLuffyFound(true);
+        }
+      }
+    } else if (name == "Kon") {
+      if (1212 < props.position[0] && props.position[0] < 1289) {
+        if (1335 < props.position[1] && props.position[1] < 1460) {
+          console.log("found Kon");
+
+          props.setKonFound(true);
+        }
+      }
+    } else {
+      if (1598 < props.position[0] && props.position[0] < 1643) {
+        if (332 < props.position[1] && props.position[1] < 400) {
+          console.log("found Zim");
+
+          props.setZimFound(true);
+        }
+      }
+    }
+
+    // console.log(props.luffyFound);
   };
 
   if (props.dropdownOpen == true)

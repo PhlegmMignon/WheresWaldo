@@ -3,6 +3,10 @@ import mainImg from "../images/nMpQXwq.jpg";
 import CharDropdown from "./CharDropdown";
 
 export default function Main(props) {
+  useEffect(() => {
+    console.log(props.luffyFound);
+  }, [props.luffyFound]);
+
   const [isListening, setIsListening] = useState(false);
 
   //Removes event listeners
@@ -23,7 +27,7 @@ export default function Main(props) {
 
     // console.log(e.clientY);
     // console.log(window.pageYOffset);
-    console.log("main" + x, y);
+    // console.log("main" + x, y);
     //pageYOffset, screenY, scrollY,
 
     props.setPosition([x, y]);
@@ -53,6 +57,9 @@ export default function Main(props) {
             setLuffyFound={props.setLuffyFound}
             setKonFound={props.setKonFound}
             setZimFound={props.setZimFound}
+            luffyFound={props.luffyFound}
+            konFound={props.konFound}
+            zimFound={props.zimFound}
           />
         }
       </div>

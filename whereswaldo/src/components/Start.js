@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Start(props) {
   useEffect(() => {
-    if (props.numFound == 3) endTimer();
-  }, [props.numFound]);
+    console.log(props.luffyFound);
+  }, [props.luffyFound]);
 
   const [timer, setTimer] = useState(0);
 
@@ -17,6 +17,16 @@ export default function Start(props) {
 
   const updateTimer = async () => {
     props.setMs(Date.now() - startTime);
+
+    console.log(props.luffyFound);
+
+    // if (
+    //   props.luffyFound == true &&
+    //   props.konFound == true &&
+    //   props.zimFound == true
+    // ) {
+    //   endTimer();
+    // }
   };
 
   const startTimer = () => {
@@ -26,6 +36,7 @@ export default function Start(props) {
   };
 
   const endTimer = () => {
+    console.log("end");
     clearInterval(interval);
   };
 
@@ -40,4 +51,5 @@ export default function Start(props) {
   );
 }
 
-//Function that calls end timer will be passed down thru props
+//Turn startTime into a state and pass it to timer.
+//Move updatetimer and endTimer to timer.js

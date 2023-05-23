@@ -22,7 +22,6 @@ export default function App() {
 
   //Timer states
   const [ms, setMs] = useState("");
-  const [numFound, setNumFound] = useState(0);
 
   const [gameStart, setGameStart] = useState(false);
   let checkInterval = setInterval(() => {
@@ -45,20 +44,15 @@ export default function App() {
   const [konFound, setKonFound] = useState(false);
   const [zimFound, setZimFound] = useState(false);
 
+  //charFound never changes in Start.js for some reason if you don't do this
+  useEffect(() => {});
+
   return (
     <>
       <div className="App">
         <Header timer={<Timer ms={ms} />} />
         <Routes>
-          {/* <Route
-          path="/cart"
-          element={
-            <Cart
-              cart={cart}
-            
-            />
-          }
-        />
+          {/* 
         <Route
           path="/shop"
           element={
@@ -75,7 +69,9 @@ export default function App() {
                 setGameStart={setGameStart}
                 ms={ms}
                 setMs={setMs}
-                numFound={numFound}
+                luffyFound={luffyFound}
+                konFound={konFound}
+                zimFound={zimFound}
               />
             }
           />
@@ -87,10 +83,12 @@ export default function App() {
                 setPosition={setPosition}
                 dropdownOpen={dropdownOpen}
                 setDropdownOpen={setDropdownOpen}
-                setNumFound={setNumFound}
                 setLuffyFound={setLuffyFound}
                 setKonFound={setKonFound}
                 setZimFound={setZimFound}
+                luffyFound={luffyFound}
+                konFound={konFound}
+                zimFound={zimFound}
               />
             }
           />

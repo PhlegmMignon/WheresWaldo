@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 
 export default function Timer(props) {
-  useEffect(() => {}, [props.ms]);
+  useEffect(() => {
+    return () => {};
+  }, [props.ms]);
 
   if (Math.round(props.ms / 1000) < 60) {
     return (
