@@ -22,6 +22,7 @@ export default function App() {
 
   //Timer states
   const [ms, setMs] = useState("");
+  const [startTime, setStartTIme] = useState(0);
 
   const [gameStart, setGameStart] = useState(false);
   let checkInterval = setInterval(() => {
@@ -45,12 +46,11 @@ export default function App() {
   const [zimFound, setZimFound] = useState(false);
 
   //charFound never changes in Start.js for some reason if you don't do this
-  useEffect(() => {});
 
   return (
     <>
       <div className="App">
-        <Header timer={<Timer ms={ms} />} />
+        <Header timer={<Timer ms={ms} gameStart={gameStart} />} />
         <Routes>
           {/* 
         <Route
@@ -69,6 +69,7 @@ export default function App() {
                 setGameStart={setGameStart}
                 ms={ms}
                 setMs={setMs}
+                setStartTime={setStartTIme}
                 luffyFound={luffyFound}
                 konFound={konFound}
                 zimFound={zimFound}
@@ -79,6 +80,9 @@ export default function App() {
             path="/image"
             element={
               <Main
+                gameStart={gameStart}
+                setMs={setMs}
+                startTime={startTime}
                 position={position}
                 setPosition={setPosition}
                 dropdownOpen={dropdownOpen}

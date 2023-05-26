@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from "react";
 import mainImg from "../images/nMpQXwq.jpg";
 import CharDropdown from "./CharDropdown";
+import { startTimer, updateTimer, endTimer } from "../timerControl";
 
 export default function Main(props) {
+  let interval;
   useEffect(() => {
-    console.log(props.luffyFound);
-  }, [props.luffyFound]);
+    if (props.gameStart) {
+      interval = startTimer(props.setMs, props.startTime, updateTimer);
+    }
+  }, [props.gameStart]);
+
+  useEffect(() => {
+    if (
+      props.luffyFound == true &&
+      props.konFound == true &&
+      props.zimFound == true
+    ) {
+      console.log("check");
+
+      timerControl(props.startTime, props.setMs, true);
+    }
+  }, [props.luffyFound, props.konFound, props.zimFound]);
 
   const [isListening, setIsListening] = useState(false);
 
@@ -45,6 +61,8 @@ export default function Main(props) {
       ? props.setDropdownOpen(false)
       : props.setDropdownOpen(true);
   };
+
+  //Handle timer states
 
   return (
     <div id="main">
