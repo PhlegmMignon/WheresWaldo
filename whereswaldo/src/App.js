@@ -6,6 +6,7 @@ import Start from "./components/Start";
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
+import { makeTimer } from "./timerControl";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -22,19 +23,20 @@ export default function App() {
 
   //Timer states
   const [ms, setMs] = useState("");
-  const [startTime, setStartTIme] = useState(0);
+  const [startTime, setStartTime] = useState(0);
+  const [gameEnd, setGameEnd] = useState(false);
 
-  const [gameStart, setGameStart] = useState(false);
+  const [gameOngoing, setGameOngoing] = useState(false);
   let checkInterval = setInterval(() => {
-    if (gameStart) return true;
+    if (gameOngoing) return true;
   }, 100);
 
   //Unmounts start when start is clicked
   useEffect(() => {
-    if (gameStart) {
+    if (gameOngoing) {
       clearInterval(checkInterval);
     }
-  }, [gameStart]);
+  }, [gameOngoing]);
 
   //Dropdown states
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -50,7 +52,11 @@ export default function App() {
   return (
     <>
       <div className="App">
-        <Header timer={<Timer ms={ms} gameStart={gameStart} />} />
+        <Header
+          timer={
+            <Timer ms={ms} gameOngoing={gameOngoing} startTime={startTime} />
+          }
+        />
         <Routes>
           {/* 
         <Route
@@ -66,10 +72,11 @@ export default function App() {
             path="/"
             element={
               <Start
-                setGameStart={setGameStart}
+                setGameOngoing={setGameOngoing}
                 ms={ms}
                 setMs={setMs}
-                setStartTime={setStartTIme}
+                setStartTime={setStartTime}
+                startTime={startTime}
                 luffyFound={luffyFound}
                 konFound={konFound}
                 zimFound={zimFound}
@@ -80,9 +87,9 @@ export default function App() {
             path="/image"
             element={
               <Main
-                gameStart={gameStart}
+                gameOngoing={gameOngoing}
+                setGameOngoing={setGameOngoing}
                 setMs={setMs}
-                startTime={startTime}
                 position={position}
                 setPosition={setPosition}
                 dropdownOpen={dropdownOpen}

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Start(props) {
   const handleClick = () => {
-    props.setGameStart(true);
+    props.setGameOngoing(true);
     props.setStartTime(Date.now());
   };
 

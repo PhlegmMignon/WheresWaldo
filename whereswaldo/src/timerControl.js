@@ -1,17 +1,31 @@
-const startTimer = (setMs, startTime, updateTimer) => {
-  let interval = setInterval(updateTimer(setMs, startTime), 1000);
-  return interval;
+const timerFactory = () => {
+  let startTime;
+  let interval;
+
+  const startTimer = (setMs) => {
+    interval = setInterval(updateTimer(setMs), 1000);
+  };
+
+  const updateTimer = async (setMs) => {
+    setMs(Date.now() - startTime);
+  };
+
+  const endTimer = (interval) => {
+    clearInterval(interval);
+  };
+
+  return { startTimer, updateTimer, endTimer, interval, startTime };
 };
 
-const updateTimer = async (setMs, startTime) => {
-  setMs(Date.now() - startTime);
-};
+function makeTimer(setMs) {
+  let timer = timerFactory();
+  // timer.startTime = Date.now();
+  // timer.startTimer(setMs);
 
-const endTimer = (interval) => {
-  clearInterval(interval);
-};
+  return timer;
+}
 
-export { startTimer, updateTimer, endTimer };
+export { timerFactory, makeTimer };
 
 //Cuz you're calling it twice the interval is still active
 //Maybe make a state of it so you can remove it
