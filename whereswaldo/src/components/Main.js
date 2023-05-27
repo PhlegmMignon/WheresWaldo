@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from "react";
 import mainImg from "../images/nMpQXwq.jpg";
 import CharDropdown from "./CharDropdown";
-import { timerFactory, makeTimer } from "../timerControl";
 
 export default function Main(props) {
-  // useEffect(() => {
-  //   // props.setTimerObj(timerFactory());
-
-  //   let tempTimer = props.timerObj;
-  //   console.log(tempTimer);
-  //   // let tempTimer = timerFactory();
-  //   // tempTimer.startTime = Date.now();
-  //   // let timerInterval = tempTimer.updateTimer(props.setMs);
-  //   // tempTimer.timerInterval = timerInterval;
-  // }, [props.gameStart]);
-
   useEffect(() => {
     if (
       props.luffyFound == true &&
@@ -22,8 +10,6 @@ export default function Main(props) {
       props.zimFound == true
     ) {
       props.setGameOngoing(false);
-
-      // clearInterval(props.timerObj.timerInterval);
     }
   }, [props.luffyFound, props.konFound, props.zimFound]);
 

@@ -7,30 +7,6 @@ export default function Start(props) {
     props.setStartTime(Date.now());
   };
 
-  // const updateTimer = async () => {
-  //   props.setMs(Date.now() - startTime);
-
-  //   console.log(props.luffyFound);
-
-  //   // if (
-  //   //   props.luffyFound == true &&
-  //   //   props.konFound == true &&
-  //   //   props.zimFound == true
-  //   // ) {
-  //   //   endTimer();
-  //   // }
-  // };
-
-  // const startTimer = () => {
-  //   startTime = Date.now();
-  //   interval = setInterval(updateTimer, 1000);
-  // };
-
-  // const endTimer = () => {
-  //   console.log("end");
-  //   clearInterval(interval);
-  // };
-
   return (
     <div id="start">
       <Link to="/image">
@@ -41,6 +17,3 @@ export default function Start(props) {
     </div>
   );
 }
-
-//Turn startTime into a state and pass it to timer.
-//Move updatetimer and endTimer to timer.js

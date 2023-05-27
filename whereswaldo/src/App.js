@@ -6,7 +6,6 @@ import Start from "./components/Start";
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
-import { makeTimer } from "./timerControl";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -24,7 +23,6 @@ export default function App() {
   //Timer states
   const [ms, setMs] = useState("");
   const [startTime, setStartTime] = useState(0);
-  const [gameEnd, setGameEnd] = useState(false);
 
   const [gameOngoing, setGameOngoing] = useState(false);
   let checkInterval = setInterval(() => {
@@ -56,6 +54,9 @@ export default function App() {
           timer={
             <Timer ms={ms} gameOngoing={gameOngoing} startTime={startTime} />
           }
+          luffyFound={luffyFound}
+          konFound={konFound}
+          zimFound={zimFound}
         />
         <Routes>
           {/* 
@@ -111,11 +112,6 @@ export default function App() {
 
 //Figure out what fxs you need to make sure firebase loads
 //Add sign in btn and see if you can call the fx
-
-//Have start btn component that loads the image
-//    When last char is found, end timer is called
-
-//Verification of character
 
 //When a char is found, add found text under it in header
 //If wrong char, have small pop up that fades after 3 secs (sticky property)
