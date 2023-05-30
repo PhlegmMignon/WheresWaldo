@@ -50,6 +50,7 @@ export default function CharDropdown(props) {
           onClick={() => handleClick("Luffy")}
           className="charDrop"
           id="luffyDrop"
+          data-testid="luffyDrop"
         >
           Luffy
         </li>
@@ -57,6 +58,7 @@ export default function CharDropdown(props) {
           onClick={() => handleClick("Kon")}
           className="charDrop"
           id="konDrop"
+          data-testid="konDrop"
         >
           Kon
         </li>
@@ -64,6 +66,7 @@ export default function CharDropdown(props) {
           onClick={() => handleClick("Zim")}
           className="charDrop"
           id="zimDrop"
+          data-testid="zimDrop"
         >
           Zim
         </li>

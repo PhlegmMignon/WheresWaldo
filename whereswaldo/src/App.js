@@ -52,7 +52,12 @@ export default function App() {
       <div className="App">
         <Header
           timer={
-            <Timer ms={ms} gameOngoing={gameOngoing} startTime={startTime} />
+            <Timer
+              ms={ms}
+              setMs={setMs}
+              gameOngoing={gameOngoing}
+              startTime={startTime}
+            />
           }
           luffyFound={luffyFound}
           konFound={konFound}

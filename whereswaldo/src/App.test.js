@@ -14,10 +14,11 @@ import App from "./App";
 //       <App />
 //     </MemoryRouter>
 //   );
+//   let user = userEvent.setup();
 
 //   let btn = screen.getByText("Start");
 //   expect(btn).toBeInTheDocument();
-//   await userEvent.click(btn);
+//   await user.click(btn);
 
 //   expect(btn).not.toBeInTheDocument();
 // });
@@ -67,7 +68,9 @@ import App from "./App";
 //Use backup above if this doesn't work
 //Come back when you can stop the timer so you can stop the act errors
 // test("ms gets updated every second", async () => {
-//   jest.useFakeTimers();
+//   // jest.useFakeTimers({ advanceTimers: true });
+//   // jest.useFakeTimers();
+
 //   render(
 //     <MemoryRouter>
 //       <App />
@@ -76,19 +79,66 @@ import App from "./App";
 
 //   let btn = screen.getByText("Start");
 //   expect(btn).toBeInTheDocument();
-//   await userEvent.click(btn);
+//   userEvent.click(btn);
 
-//   act(() => {
-//     jest.advanceTimersByTime(2000);
-//   });
+//   // act(() => {
+//   //   jest.advanceTimersByTime(3000);
+//   // });
 
 //   // let thing = await screen.findByRole("");
+//   await new Promise((r) => setTimeout(r, 1000));
 
 //   let ele = await screen.findByTestId("testTimer1");
+//   jest.runAllTimers();
+//   console.log(ele);
+//   //   await screen.findByRole("");
 
 //   expect(await ele.textContent).toBe("3s");
 // });
 
-// test('Timer displays correct time', () => {
-//
-// })
+//You can make a test where you wait 3s before clicking all chars to update the
+//timer and see what happens
+
+test("Finding all chars ends game", async () => {
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+
+  let btn = screen.getByText("Start");
+  expect(btn).toBeInTheDocument();
+  await userEvent.click(btn);
+
+  // document.dispatchEvent(
+  //   new MouseEvent("mousedown", {
+  //     clientX: 782,
+  //     clientY: 1430,
+  //   })
+  // );
+
+  // const event = new MouseEvent("click", {
+  //   clientX: 782,
+  //   clientY: 1430,
+  // });
+
+  // document.dispatchEvent(event);
+
+  let ele = screen.getByTestId("mainImg");
+  act(() => {
+    ele.dispatchEvent(
+      new MouseEvent("click", {
+        clientX: 782,
+        clientY: 1430,
+        bubbles: true,
+      })
+    );
+  });
+
+  let luffy = screen.getByTestId("luffyDrop");
+  await userEvent.click(luffy);
+
+  await screen.findByRole("");
+});
+
+//782 1430

@@ -37,11 +37,6 @@ export default function Header(props) {
           <div style={{ textDecoration: zimStyle }}>Zim</div>
         </div>
       </div>
-      {/* <div id="found?">
-        <div id="found1"></div>
-        <div id="found2"></div>
-        <div id="found3"></div>
-      </div> */}
       {props.timer}
     </div>
   );
