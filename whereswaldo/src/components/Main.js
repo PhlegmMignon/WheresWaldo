@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mainImg from "../images/nMpQXwq.jpg";
 import CharDropdown from "./CharDropdown";
+import makeWinModal from "./WinModal";
 
 export default function Main(props) {
   useEffect(() => {
@@ -10,10 +11,12 @@ export default function Main(props) {
       props.zimFound == true
     ) {
       props.setGameOngoing(false);
+      setShowModal(true);
     }
   }, [props.luffyFound, props.konFound, props.zimFound]);
 
   const [isListening, setIsListening] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   //Removes event listeners
   // useEffect(() => {
@@ -31,11 +34,7 @@ export default function Main(props) {
     let x = e.clientX;
     let y = e.clientY + window.pageYOffset;
 
-    // console.log(e.clientY);
-    // console.log(window.pageYOffset);
-    console.log("main" + x, y);
-    //pageYOffset, screenY, scrollY,
-
+    // console.log("main" + x, y);
     props.setPosition([x, y]);
   };
 
@@ -52,12 +51,12 @@ export default function Main(props) {
       : props.setDropdownOpen(true);
   };
 
-  //Handle timer states
-
   return (
     <div id="main" data-testid="main">
       {/* <img src={mainImg} id="mainImg" alt="Where's waldo board" /> */}
       <div onClick={handleClick} id="mainImg" data-testid="mainImg">
+        {showModal ? props.modal : ""}
+
         {
           <CharDropdown
             position={props.position}
@@ -74,5 +73,3 @@ export default function Main(props) {
     </div>
   );
 }
-
-//WIP props for dropdown to work

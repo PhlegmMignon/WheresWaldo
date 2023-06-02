@@ -1,5 +1,8 @@
 // Import the functions you need from the SDKs you need
+import firebase from "firebase/app";
+import "firebase/firestore";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,7 +17,7 @@ const config = {
   appId: "1:996636755591:web:04f5d0a50db94991441a22",
 };
 
-export function getFirebaseConfig() {
+function getFirebaseConfig() {
   if (!config || !config.apiKey) {
     throw new Error(
       "No Firebase configuration object provided." +
@@ -25,3 +28,8 @@ export function getFirebaseConfig() {
     return config;
   }
 }
+const app = initializeApp(config);
+
+const firestore = getFirestore();
+
+export { app, firestore, getFirebaseConfig };

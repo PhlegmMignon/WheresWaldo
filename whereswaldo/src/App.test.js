@@ -96,49 +96,56 @@ import App from "./App";
 //   expect(await ele.textContent).toBe("3s");
 // });
 
-//You can make a test where you wait 3s before clicking all chars to update the
-//timer and see what happens
+// test("Finding all chars ends game", async () => {
+//   render(
+//     <MemoryRouter>
+//       <App />
+//     </MemoryRouter>
+//   );
 
-test("Finding all chars ends game", async () => {
-  render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  );
+//   let btn = screen.getByText("Start");
+//   expect(btn).toBeInTheDocument();
+//   await userEvent.click(btn);
 
-  let btn = screen.getByText("Start");
-  expect(btn).toBeInTheDocument();
-  await userEvent.click(btn);
+//   let ele = screen.getByTestId("mainImg");
+//   act(() => {
+//     ele.dispatchEvent(
+//       new MouseEvent("click", {
+//         clientX: 782,
+//         clientY: 1430,
+//         bubbles: true,
+//       })
+//     );
+//   });
+//   let luffy = screen.getByTestId("luffyDrop");
+//   await userEvent.click(luffy);
 
-  // document.dispatchEvent(
-  //   new MouseEvent("mousedown", {
-  //     clientX: 782,
-  //     clientY: 1430,
-  //   })
-  // );
+//   act(() => {
+//     ele.dispatchEvent(
+//       new MouseEvent("click", {
+//         clientX: 1213,
+//         clientY: 1336,
+//         bubbles: true,
+//       })
+//     );
+//   });
+//   let kon = screen.getByTestId("konDrop");
+//   await userEvent.click(kon);
 
-  // const event = new MouseEvent("click", {
-  //   clientX: 782,
-  //   clientY: 1430,
-  // });
+//   act(() => {
+//     ele.dispatchEvent(
+//       new MouseEvent("click", {
+//         clientX: 1600,
+//         clientY: 335,
+//         bubbles: true,
+//       })
+//     );
+//   });
+//   let zim = screen.getByTestId("zimDrop");
+//   await userEvent.click(zim);
 
-  // document.dispatchEvent(event);
+//   await screen.findByRole("");
 
-  let ele = screen.getByTestId("mainImg");
-  act(() => {
-    ele.dispatchEvent(
-      new MouseEvent("click", {
-        clientX: 782,
-        clientY: 1430,
-        bubbles: true,
-      })
-    );
-  });
+//   //Expect win modal here
 
-  let luffy = screen.getByTestId("luffyDrop");
-  await userEvent.click(luffy);
-
-  await screen.findByRole("");
-});
-
-//782 1430
+// });

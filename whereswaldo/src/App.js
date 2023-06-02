@@ -6,6 +6,7 @@ import Start from "./components/Start";
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
+import WinModal from "./components/WinModal";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -14,16 +15,18 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { getFirebaseConfig } from "./firebase-config.js";
+import { startFirebase } from "./firebaseOrders";
+
+import { app, getFirebaseConfig } from "./firebase-config.js";
 
 export default function App() {
-  const config = getFirebaseConfig();
-  const app = initializeApp(config);
+  const auth = getAuth(app);
 
   //Timer states
   const [ms, setMs] = useState("");
   const [startTime, setStartTime] = useState(0);
 
+  //Detects when game is started
   const [gameOngoing, setGameOngoing] = useState(false);
   let checkInterval = setInterval(() => {
     if (gameOngoing) return true;
@@ -44,8 +47,6 @@ export default function App() {
   const [luffyFound, setLuffyFound] = useState(false);
   const [konFound, setKonFound] = useState(false);
   const [zimFound, setZimFound] = useState(false);
-
-  //charFound never changes in Start.js for some reason if you don't do this
 
   return (
     <>
@@ -93,9 +94,9 @@ export default function App() {
             path="/image"
             element={
               <Main
+                modal={<WinModal gameOngoing={gameOngoing} ms={ms} />}
                 gameOngoing={gameOngoing}
                 setGameOngoing={setGameOngoing}
-                setMs={setMs}
                 position={position}
                 setPosition={setPosition}
                 dropdownOpen={dropdownOpen}
