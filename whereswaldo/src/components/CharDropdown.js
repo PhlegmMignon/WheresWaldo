@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import CharVerify from "../CharVerify";
+import CharVerify from "../utils//CharVerify";
 
 export default function CharDropdown(props) {
   // useEffect(() => {

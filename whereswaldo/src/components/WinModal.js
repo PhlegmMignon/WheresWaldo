@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { loadMessages, signIn } from "../firebaseOrders.js";
 
 export default function WinModal(props) {
@@ -21,13 +21,53 @@ export default function WinModal(props) {
     fontSize: "1.5rem",
     padding: "50px",
     backgroundColor: "#d3d3d3",
+    zIndex: 200,
   };
+
+  const [scoreUpload, setScoreUpload] = useState(null);
+  const [scoreList, setScoreList] = useState([]);
 
   useEffect(() => {
     if (!props.gameOngoing) {
-      // checkIsHighscore();
-      // loadMessages();
-      // signIn();
+      // getScores()
+      //Sort top 5 scores
+      let scores, currentScore;
+      if (scores[5] < currentScore) {
+        return (
+          <div
+            id="modalContainer"
+            data-testid="modalContainer"
+            onClick={onClick}
+            style={MODAL_STYLE}
+          >
+            <div id="modal" style={MODAL_TEXT_STYLE}>
+              <p>
+                New highscore! Enter your name below to register your score.
+              </p>
+              <form action="">
+                <input type="text" maxLength="3" />
+              </form>
+              <btn id="submitBtn">Submit</btn>
+              <btn id="skipBtn" onClick={onClick}>
+                Skip
+              </btn>
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div
+            id="modalContainer"
+            data-testid="modalContainer"
+            onClick={onClick}
+            style={MODAL_STYLE}
+          >
+            <div id="modal" style={MODAL_TEXT_STYLE}>
+              <p>You found everyone in x seconds!</p>
+            </div>
+          </div>
+        );
+      }
     }
   }, [props.gameOngoing]);
 
@@ -43,7 +83,11 @@ export default function WinModal(props) {
       onClick={onClick}
       style={MODAL_STYLE}
     >
-      <div id="modalText" style={MODAL_TEXT_STYLE}>
+      <div
+        id="modalText"
+        onClick={(e) => e.stopPropagation()}
+        style={MODAL_TEXT_STYLE}
+      >
         You found everyone!
       </div>
     </div>
@@ -64,3 +108,5 @@ export default function WinModal(props) {
 //Yes/no button
 
 //If not highscore, display you cleared in x time, + show leaderboard of top 5
+
+//Get high scores -> check if score is better than last place -> prompt user entry
