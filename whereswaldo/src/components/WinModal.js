@@ -24,50 +24,14 @@ export default function WinModal(props) {
     zIndex: 200,
   };
 
+  const [input, setInput] = useState();
   const [scoreUpload, setScoreUpload] = useState(null);
-  const [scoreList, setScoreList] = useState([]);
+  const [scoreList, setScoreList] = useState([{ name: "", score: "" }]);
 
   useEffect(() => {
     if (!props.gameOngoing) {
       // getScores()
       //Sort top 5 scores
-      let scores, currentScore;
-      if (scores[5] < currentScore) {
-        return (
-          <div
-            id="modalContainer"
-            data-testid="modalContainer"
-            onClick={onClick}
-            style={MODAL_STYLE}
-          >
-            <div id="modal" style={MODAL_TEXT_STYLE}>
-              <p>
-                New highscore! Enter your name below to register your score.
-              </p>
-              <form action="">
-                <input type="text" maxLength="3" />
-              </form>
-              <btn id="submitBtn">Submit</btn>
-              <btn id="skipBtn" onClick={onClick}>
-                Skip
-              </btn>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div
-            id="modalContainer"
-            data-testid="modalContainer"
-            onClick={onClick}
-            style={MODAL_STYLE}
-          >
-            <div id="modal" style={MODAL_TEXT_STYLE}>
-              <p>You found everyone in x seconds!</p>
-            </div>
-          </div>
-        );
-      }
     }
   }, [props.gameOngoing]);
 
@@ -76,22 +40,70 @@ export default function WinModal(props) {
     ele.style.display = "none";
   };
 
-  return (
-    <div
-      id="winModal"
-      data-testid="winModal"
-      onClick={onClick}
-      style={MODAL_STYLE}
-    >
+  const submit = () => {
+    let ele = document.getElementById("modalContainer");
+    ele.removeChild();
+  };
+
+  if (scoreList[0] == undefined) {
+    return <></>;
+  } else if (scoreList[-1].value > props.ms) {
+    return (
       <div
-        id="modalText"
-        onClick={(e) => e.stopPropagation()}
-        style={MODAL_TEXT_STYLE}
+        id="modalContainer"
+        data-testid="modalContainer"
+        onClick={onClick}
+        style={MODAL_STYLE}
       >
-        You found everyone!
+        <div id="modal" style={MODAL_TEXT_STYLE}>
+          <p>You found everyone in {props.ms} seconds!</p>
+          <p>Leaderboard</p>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div
+        id="modalContainer"
+        data-testid="modalContainer"
+        onClick={onClick}
+        style={MODAL_STYLE}
+      >
+        <div id="modal" style={MODAL_TEXT_STYLE}>
+          <p>New highscore! Enter your name below to register your score.</p>
+          <form action="">
+            <input
+              type="text"
+              maxLength="3"
+              onChange={(e) => setInput(e.target.value)}
+            />
+          </form>
+          <btn id="submitBtn" onClick={submit}>
+            Submit
+          </btn>
+          <btn id="skipBtn" onClick={onClick}>
+            Skip
+          </btn>
+        </div>
+      </div>
+    );
+  }
+  // return (
+  //   <div
+  //     id="winModal"
+  //     data-testid="winModal"
+  //     onClick={onClick}
+  //     style={MODAL_STYLE}
+  //   >
+  //     <div
+  //       id="modalText"
+  //       onClick={(e) => e.stopPropagation()}
+  //       style={MODAL_TEXT_STYLE}
+  //     >
+  //       You found everyone!
+  //     </div>
+  //   </div>
+  // );
 }
 
 //Leaderboard
