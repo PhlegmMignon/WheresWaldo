@@ -43,6 +43,9 @@ export default function App() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [position, setPosition] = useState([0, 0]);
 
+  //Modal states
+  const [showModal, setShowModal] = useState(false);
+
   //Character found states
   const [luffyFound, setLuffyFound] = useState(false);
   const [konFound, setKonFound] = useState(false);
@@ -94,9 +97,17 @@ export default function App() {
             path="/image"
             element={
               <Main
-                modal={<WinModal gameOngoing={gameOngoing} ms={ms} />}
+                modal={
+                  <WinModal
+                    setShowModal={setShowModal}
+                    gameOngoing={gameOngoing}
+                    ms={ms}
+                  />
+                }
                 gameOngoing={gameOngoing}
                 setGameOngoing={setGameOngoing}
+                showModal={showModal}
+                setShowModal={setShowModal}
                 position={position}
                 setPosition={setPosition}
                 dropdownOpen={dropdownOpen}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { loadMessages, signIn } from "../firebaseOrders.js";
+import { submitScore } from "../utils/scoreHandler.js";
 
 export default function WinModal(props) {
   const MODAL_STYLE = {
@@ -35,59 +36,54 @@ export default function WinModal(props) {
     }
   }, [props.gameOngoing]);
 
-  const onClick = () => {
-    let ele = document.getElementById("winModal");
-    ele.style.display = "none";
-  };
-
-  const submit = () => {
-    let ele = document.getElementById("modalContainer");
-    ele.removeChild();
-  };
-
-  if (scoreList[0] == undefined) {
-    return <></>;
-  } else if (scoreList[-1].value > props.ms) {
-    return (
+  // if (scoreList[0] == undefined) {
+  //   return <></>;
+  // } else if (scoreList[-1].value > props.ms) {
+  //   return (
+  //     <div
+  //       id="modalContainer"
+  //       data-testid="modalContainer"
+  //       onClick={onClick}
+  //       style={MODAL_STYLE}
+  //     >
+  //       <div id="modal" style={MODAL_TEXT_STYLE}>
+  //         <p>You found everyone in {props.ms} seconds!</p>
+  //         <p>Leaderboard</p>
+  //       </div>
+  //     </div>
+  //   );
+  // } else {
+  return (
+    <div
+      id="modalContainer"
+      data-testid="modalContainer"
+      onClick={() => props.setShowModal(false)}
+      style={MODAL_STYLE}
+    >
       <div
-        id="modalContainer"
-        data-testid="modalContainer"
-        onClick={onClick}
-        style={MODAL_STYLE}
+        id="modal"
+        style={MODAL_TEXT_STYLE}
+        onClick={(e) => e.stopPropagation()}
       >
-        <div id="modal" style={MODAL_TEXT_STYLE}>
-          <p>You found everyone in {props.ms} seconds!</p>
-          <p>Leaderboard</p>
-        </div>
+        <p>New highscore! Enter your name below to register your score.</p>
+        <form action="">
+          <input
+            id="input"
+            type="text"
+            maxLength="3"
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </form>
+        <btn id="submitBtn" onClick={() => submitScore(input, props.ms)}>
+          Submit
+        </btn>
+        <btn id="skipBtn" onClick={() => props.setShowModal(false)}>
+          Skip
+        </btn>
       </div>
-    );
-  } else {
-    return (
-      <div
-        id="modalContainer"
-        data-testid="modalContainer"
-        onClick={onClick}
-        style={MODAL_STYLE}
-      >
-        <div id="modal" style={MODAL_TEXT_STYLE}>
-          <p>New highscore! Enter your name below to register your score.</p>
-          <form action="">
-            <input
-              type="text"
-              maxLength="3"
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </form>
-          <btn id="submitBtn" onClick={submit}>
-            Submit
-          </btn>
-          <btn id="skipBtn" onClick={onClick}>
-            Skip
-          </btn>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
+  // }
   // return (
   //   <div
   //     id="winModal"
@@ -122,3 +118,6 @@ export default function WinModal(props) {
 //If not highscore, display you cleared in x time, + show leaderboard of top 5
 
 //Get high scores -> check if score is better than last place -> prompt user entry
+
+//You can write to storage?
+//You can pull from storage?

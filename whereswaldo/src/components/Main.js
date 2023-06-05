@@ -11,12 +11,11 @@ export default function Main(props) {
       props.zimFound == true
     ) {
       props.setGameOngoing(false);
-      setShowModal(true);
+      props.setShowModal(true);
     }
   }, [props.luffyFound, props.konFound, props.zimFound]);
 
   const [isListening, setIsListening] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
   //Removes event listeners
   // useEffect(() => {
@@ -55,7 +54,7 @@ export default function Main(props) {
     <div id="main" data-testid="main">
       {/* <img src={mainImg} id="mainImg" alt="Where's waldo board" /> */}
       <div onClick={handleClick} id="mainImg" data-testid="mainImg">
-        {showModal ? props.modal : ""}
+        {props.showModal ? props.modal : ""}
 
         {
           <CharDropdown
