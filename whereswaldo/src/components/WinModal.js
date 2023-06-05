@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { loadMessages, signIn } from "../firebaseOrders.js";
-import { submitScore } from "../utils/scoreHandler.js";
+import { submitScore, getScores } from "../utils/scoreHandler.js";
 
 export default function WinModal(props) {
   const MODAL_STYLE = {
@@ -31,7 +31,7 @@ export default function WinModal(props) {
 
   useEffect(() => {
     if (!props.gameOngoing) {
-      // getScores()
+      setScoreList(getScores());
       //Sort top 5 scores
     }
   }, [props.gameOngoing]);
@@ -103,7 +103,6 @@ export default function WinModal(props) {
 }
 
 //Leaderboard
-//Prompt to sign in to register high score
 //Code to store high score time in firebase
 //Request from firebase
 
