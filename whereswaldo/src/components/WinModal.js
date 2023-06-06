@@ -30,11 +30,9 @@ export default function WinModal(props) {
   const [scoreList, setScoreList] = useState([{ name: "", score: "" }]);
 
   useEffect(() => {
-    if (!props.gameOngoing) {
-      setScoreList(getScores());
-      //Sort top 5 scores
-    }
-  }, [props.gameOngoing]);
+    setScoreList(getScores());
+    //Sort top 5 scores
+  }, [props.showModal]);
 
   // if (scoreList[0] == undefined) {
   //   return <></>;
@@ -74,12 +72,12 @@ export default function WinModal(props) {
             onChange={(e) => setInput(e.target.value)}
           />
         </form>
-        <btn id="submitBtn" onClick={() => submitScore(input, props.ms)}>
+        <button id="submitBtn" onClick={() => submitScore(input, props.ms)}>
           Submit
-        </btn>
-        <btn id="skipBtn" onClick={() => props.setShowModal(false)}>
+        </button>
+        <button id="skipBtn" onClick={() => props.setShowModal(false)}>
           Skip
-        </btn>
+        </button>
       </div>
     </div>
   );
