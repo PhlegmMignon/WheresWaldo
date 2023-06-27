@@ -30,22 +30,29 @@ export default function WinModal(props) {
   const [scoreList, setScoreList] = useState([{ name: "", score: "" }]);
 
   useEffect(() => {
-    setScoreList(getScores());
+    let scores = getScores();
+    scores.then((res) => {
+      res.sort((a, b) => a.score - b.score);
+      res.slice(0, 5);
+
+      setScoreList(res);
+    });
+
     //Sort top 5 scores
   }, [props.showModal]);
 
-  // if (scoreList[0] == undefined) {
-  //   return <></>;
-  // } else if (scoreList[-1].value > props.ms) {
+  // console.log(scoreList[-1]);
+
+  // if (scores[-1].value > props.ms) {
   //   return (
   //     <div
   //       id="modalContainer"
   //       data-testid="modalContainer"
-  //       onClick={onClick}
+  //       // onClick={onClick}
   //       style={MODAL_STYLE}
   //     >
   //       <div id="modal" style={MODAL_TEXT_STYLE}>
-  //         <p>You found everyone in {props.ms} seconds!</p>
+  //         <p>You found everyone!</p>
   //         <p>Leaderboard</p>
   //       </div>
   //     </div>
@@ -99,6 +106,11 @@ export default function WinModal(props) {
   //   </div>
   // );
 }
+
+//Add handlers for submit/skip btns for after highscore name is entered.
+//It will automatically upload score to firebase
+
+//If no ms, show leaderboard
 
 //Leaderboard
 //Code to store high score time in firebase

@@ -3,7 +3,7 @@ import { storage } from "../firebase-config";
 import { ref, uploadString, listAll, getDownloadURL } from "firebase/storage";
 
 function submitScore(name, ms) {
-  if (name == null || name == undefined) return;
+  if (name == null || name == undefined || isNaN(ms)) return;
 
   let nameScore = name + ms;
   const nameRef = ref(storage, `scores/${nameScore}`);
@@ -17,9 +17,10 @@ async function getScores() {
   // let scoreList = [];
   let string;
 
-  let scoreList = [];
-  listAll(scoreListRef).then((res) => {
-    res.items.forEach((item) => {
+  //Unseperated name + score stored here
+  let scoreList = await listAll(scoreListRef).then((res) => {
+    let tempList = [];
+    res.items.map((item) => {
       string = item._location.path;
 
       let counter = 0;
@@ -27,26 +28,21 @@ async function getScores() {
         counter++;
       }
       string = string.slice(counter + 1, -1);
-
-      scoreList.push(string);
+      tempList.push(string);
     });
+    return tempList;
   });
 
-  await Promise.all(scoreList).then((val) => {
-    console.log(val);
-  });
-  console.log(scoreList);
-
-  let newScoreList;
+  let newScoreList = [];
   for (let i = 0; scoreList[i] != undefined; i++) {
-    console.log("hi");
+    console.log(scoreList);
     let name, score;
     let counter = 0;
     while (isNaN(scoreList[i].charAt(counter))) {
       counter++;
     }
     name = scoreList[i].slice(0, counter);
-    score = scoreList[i].slice(counter, -1);
+    score = scoreList[i].slice(counter);
     // console.log(name);
     // console.log(score);
     newScoreList.push({ name: name, score: score });
