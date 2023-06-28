@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 import CharVerify from "../utils//CharVerify";
 
 export default function CharDropdown(props) {
-  // useEffect(() => {
-  //   console.log(props.luffyFound);
-  // }, [props.luffyFound]);
-
   const handleClick = (name) => {
     if (name == "Luffy") {
       if (781 < props.position[0] && props.position[0] < 837) {
@@ -31,8 +27,6 @@ export default function CharDropdown(props) {
         }
       }
     }
-
-    // console.log(props.luffyFound);
   };
 
   if (props.dropdownOpen == true)

@@ -67,16 +67,6 @@ export default function App() {
           zimFound={zimFound}
         />
         <Routes>
-          {/* 
-        <Route
-          path="/shop"
-          element={
-            <Shop
-              setItems={setItems}
-              
-            />
-          }
-        /> */}
           <Route
             path="/"
             element={

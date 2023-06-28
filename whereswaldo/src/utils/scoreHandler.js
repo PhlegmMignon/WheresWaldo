@@ -13,7 +13,6 @@ function submitScore(name, ms) {
 
 async function getScores() {
   const scoreListRef = ref(storage, `scores/`);
-  // let scoreList = [];
   let string;
 
   //Unseperated name + score stored here
@@ -42,8 +41,6 @@ async function getScores() {
     }
     name = scoreList[i].slice(0, counter);
     score = scoreList[i].slice(counter);
-    // console.log(name);
-    // console.log(score);
     newScoreList.push({ name: name, score: score, id: uniqid() });
     console.log(newScoreList);
   }
@@ -54,7 +51,6 @@ function sortScores(scoreList) {
   scoreList.sort((a, b) => {
     let keyA = a.score;
     let keyB = b.score;
-    //log a.score in the above function to make sure it gives a value
 
     return keyA < keyB ? -1 : 1;
   });

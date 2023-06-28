@@ -7,10 +7,6 @@ export default function Leaderboard(props) {
     justifyContent: "space-between",
   };
 
-  // const LEADERBOARD_STYLE = {
-  //   textAlign: 'left'
-  // };
-
   return (
     <div id="leaderboard">
       Leaderboard

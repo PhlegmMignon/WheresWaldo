@@ -27,23 +27,11 @@ export default function Main(props) {
 
   const [isListening, setIsListening] = useState(false);
 
-  //Removes event listeners
-  // useEffect(() => {
-  //   return () => {
-  //     if (ele) {
-  //       const newEle = ele.cloneNode(true);
-  //       ele.parentNode.replaceChild(newEle, ele);
-  //       console.log("hi");
-  //     }
-  //   };
-  // }, []);
-
   let ele;
   const handleListener = (e) => {
     let x = e.clientX;
     let y = e.clientY + window.pageYOffset;
 
-    // console.log("main" + x, y);
     props.setPosition([x, y]);
   };
 
@@ -51,8 +39,6 @@ export default function Main(props) {
     if (!isListening) {
       ele = document.getElementById("mainImg");
       ele.addEventListener("click", handleListener(e));
-
-      // setIsListening(true);
     }
 
     props.dropdownOpen
@@ -62,7 +48,6 @@ export default function Main(props) {
 
   return (
     <div id="main" data-testid="main">
-      {/* <img src={mainImg} id="mainImg" alt="Where's waldo board" /> */}
       <div onClick={handleClick} id="mainImg" data-testid="mainImg">
         {props.showModal ? props.modal : ""}
 
