@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home";
 import Start from "./components/Start";
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
 import WinModal from "./components/WinModal";
-import { initializeApp } from "firebase/app";
 import {
   getAuth,
   onAuthStateChanged,
@@ -15,8 +13,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { startFirebase } from "./firebaseOrders";
-import { app, getFirebaseConfig } from "./firebase-config.js";
+import { app } from "./firebase-config.js";
 
 export default function App() {
   const auth = getAuth(app);
@@ -130,15 +127,3 @@ export default function App() {
     </>
   );
 }
-
-//Figure out what fxs you need to make sure firebase loads
-//Add sign in btn and see if you can call the fx
-
-//When a char is found, add found text under it in header
-//If wrong char, have small pop up that fades after 3 secs (sticky property)
-
-//Leaderboard info is stored in firebase.
-//If not high score, show leaderboard top 5 when end timer is called and display current time
-//   If high score, prompt name then show leaderboard
-//When end timer is called, take current time and compare to firebase
-//

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { loadMessages, signIn } from "../firebaseOrders.js";
 import { submitScore } from "../utils/scoreHandler.js";
 import Leaderboard from "./Leaderboard.js";
 
@@ -30,8 +29,6 @@ export default function WinModal(props) {
   const [update, setUpdate] = useState(false);
 
   useEffect(() => {}, [update]);
-
-  // console.log(props.scoreList[props.scoreList.length - 1].score);
 
   if (
     props.scoreList[props.scoreList.length - 1].score > props.ms ||
@@ -92,44 +89,4 @@ export default function WinModal(props) {
       </div>
     );
   }
-  // return (
-  //   <div
-  //     id="winModal"
-  //     data-testid="winModal"
-  //     onClick={onClick}
-  //     style={MODAL_STYLE}
-  //   >
-  //     <div
-  //       id="modalText"
-  //       onClick={(e) => e.stopPropagation()}
-  //       style={MODAL_TEXT_STYLE}
-  //     >
-  //       You found everyone!
-  //     </div>
-  //   </div>
-  // );
 }
-
-//Add handlers for submit/skip btns for after highscore name is entered.
-//It will automatically upload score to firebase
-
-//If no ms, show leaderboard
-
-//Leaderboard
-//Code to store high score time in firebase
-//Request from firebase
-
-//Check is highscore
-//Load top 5 from firebase then verify if
-
-//If highscore
-//You scored a new highscore! Show leaderboard of top 5
-//Prompt sign in to register your time.
-//Yes/no button
-
-//If not highscore, display you cleared in x time, + show leaderboard of top 5
-
-//Get high scores -> check if score is better than last place -> prompt user entry
-
-//You can write to storage?
-//You can pull from storage?
