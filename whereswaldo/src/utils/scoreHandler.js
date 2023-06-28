@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../firebase-config";
 import { ref, uploadString, listAll, getDownloadURL } from "firebase/storage";
+import uniqid from "uniqid";
 
 function submitScore(name, ms) {
   if (name == null || name == undefined || isNaN(ms)) return;
 
   let nameScore = name + ms;
   const nameRef = ref(storage, `scores/${nameScore}`);
-  uploadString(nameRef, nameScore).then(() => {
-    alert("Uploaded");
-  });
+  uploadString(nameRef, nameScore).then(() => {});
 }
 
 async function getScores() {
@@ -45,7 +44,7 @@ async function getScores() {
     score = scoreList[i].slice(counter);
     // console.log(name);
     // console.log(score);
-    newScoreList.push({ name: name, score: score });
+    newScoreList.push({ name: name, score: score, id: uniqid() });
     console.log(newScoreList);
   }
   return newScoreList;

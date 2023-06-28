@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadMessages, signIn } from "../firebaseOrders.js";
-import { submitScore, getScores } from "../utils/scoreHandler.js";
+import { submitScore } from "../utils/scoreHandler.js";
+import Leaderboard from "./Leaderboard.js";
 
 export default function WinModal(props) {
   const MODAL_STYLE = {
@@ -16,7 +17,7 @@ export default function WinModal(props) {
 
   const MODAL_TEXT_STYLE = {
     position: "relative",
-    width: "10%",
+    width: "11%",
     top: "50%",
     left: "50%",
     fontSize: "1.5rem",
@@ -26,69 +27,71 @@ export default function WinModal(props) {
   };
 
   const [input, setInput] = useState();
-  const [scoreUpload, setScoreUpload] = useState(null);
-  const [scoreList, setScoreList] = useState([{ name: "", score: "" }]);
+  const [update, setUpdate] = useState(false);
 
-  useEffect(() => {
-    let scores = getScores();
-    scores.then((res) => {
-      res.sort((a, b) => a.score - b.score);
-      res.slice(0, 5);
+  useEffect(() => {}, [update]);
 
-      setScoreList(res);
-    });
+  // console.log(props.scoreList[props.scoreList.length - 1].score);
 
-    //Sort top 5 scores
-  }, [props.showModal]);
-
-  // console.log(scoreList[-1]);
-
-  // if (scores[-1].value > props.ms) {
-  //   return (
-  //     <div
-  //       id="modalContainer"
-  //       data-testid="modalContainer"
-  //       // onClick={onClick}
-  //       style={MODAL_STYLE}
-  //     >
-  //       <div id="modal" style={MODAL_TEXT_STYLE}>
-  //         <p>You found everyone!</p>
-  //         <p>Leaderboard</p>
-  //       </div>
-  //     </div>
-  //   );
-  // } else {
-  return (
-    <div
-      id="modalContainer"
-      data-testid="modalContainer"
-      onClick={() => props.setShowModal(false)}
-      style={MODAL_STYLE}
-    >
+  if (
+    props.scoreList[props.scoreList.length - 1].score > props.ms ||
+    update == true
+  ) {
+    return (
       <div
-        id="modal"
-        style={MODAL_TEXT_STYLE}
-        onClick={(e) => e.stopPropagation()}
+        id="modalContainer"
+        data-testid="modalContainer"
+        onClick={() => props.setShowModal(false)}
+        style={MODAL_STYLE}
       >
-        <p>New highscore! Enter your name below to register your score.</p>
-        <form action="">
-          <input
-            id="input"
-            type="text"
-            maxLength="3"
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </form>
-        <button id="submitBtn" onClick={() => submitScore(input, props.ms)}>
-          Submit
-        </button>
-        <button id="skipBtn" onClick={() => props.setShowModal(false)}>
-          Skip
-        </button>
+        <div
+          id="modal"
+          style={MODAL_TEXT_STYLE}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <p>You found everyone!</p>
+          <Leaderboard scoreList={props.scoreList} />
+        </div>
       </div>
-    </div>
-  );
-  // }
+    );
+  } else {
+    return (
+      <div
+        id="modalContainer"
+        data-testid="modalContainer"
+        onClick={() => props.setShowModal(false)}
+        style={MODAL_STYLE}
+      >
+        <div
+          id="modal"
+          style={MODAL_TEXT_STYLE}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <p>New highscore! Enter your name below to register your score.</p>
+          <form action="">
+            <input
+              id="input"
+              type="text"
+              maxLength="3"
+              onChange={(e) => setInput(e.target.value)}
+            />
+          </form>
+          <button
+            id="submitBtn"
+            onClick={() => {
+              submitScore(input, props.ms);
+              setUpdate(true);
+            }}
+          >
+            Submit
+          </button>
+          <button id="skipBtn" onClick={() => setUpdate(true)}>
+            Skip
+          </button>
+        </div>
+      </div>
+    );
+  }
   // return (
   //   <div
   //     id="winModal"

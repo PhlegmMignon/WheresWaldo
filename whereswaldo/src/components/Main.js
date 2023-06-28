@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import mainImg from "../images/nMpQXwq.jpg";
 import CharDropdown from "./CharDropdown";
 import makeWinModal from "./WinModal";
+import { getScores } from "../utils/scoreHandler";
 
 export default function Main(props) {
   useEffect(() => {
@@ -10,6 +11,15 @@ export default function Main(props) {
       props.konFound == true &&
       props.zimFound == true
     ) {
+      //Preps scoreList for leaderboard
+      let scores = getScores();
+      scores.then((res) => {
+        res.sort((a, b) => a.score - b.score);
+        res.slice(0, 5);
+        console.log(res);
+        props.setScoreList(res);
+      });
+
       props.setGameOngoing(false);
       props.setShowModal(true);
     }

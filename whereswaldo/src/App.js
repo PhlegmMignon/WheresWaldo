@@ -16,7 +16,6 @@ import {
   signOut,
 } from "firebase/auth";
 import { startFirebase } from "./firebaseOrders";
-
 import { app, getFirebaseConfig } from "./firebase-config.js";
 
 export default function App() {
@@ -50,6 +49,9 @@ export default function App() {
   const [luffyFound, setLuffyFound] = useState(false);
   const [konFound, setKonFound] = useState(false);
   const [zimFound, setZimFound] = useState(false);
+
+  //Leaderboard & WinModal states
+  const [scoreList, setScoreList] = useState([{ name: "", score: "", id: "" }]);
 
   return (
     <>
@@ -102,8 +104,10 @@ export default function App() {
                     setShowModal={setShowModal}
                     gameOngoing={gameOngoing}
                     ms={ms}
+                    scoreList={scoreList}
                   />
                 }
+                setScoreList={setScoreList}
                 gameOngoing={gameOngoing}
                 setGameOngoing={setGameOngoing}
                 showModal={showModal}
