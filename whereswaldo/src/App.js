@@ -43,12 +43,6 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
 
   //Character found states
-  const [luffyFound, setLuffyFound] = useState(false);
-  const [konFound, setKonFound] = useState(false);
-  const [zimFound, setZimFound] = useState(false);
-
-  //Leaderboard & WinModal states
-  const [scoreList, setScoreList] = useState([{ name: "", score: "", id: "" }]);
 
   return (
     <>
@@ -62,9 +56,6 @@ export default function App() {
               startTime={startTime}
             />
           }
-          luffyFound={luffyFound}
-          konFound={konFound}
-          zimFound={zimFound}
         />
         <Routes>
           <Route
@@ -76,9 +67,6 @@ export default function App() {
                 setMs={setMs}
                 setStartTime={setStartTime}
                 startTime={startTime}
-                luffyFound={luffyFound}
-                konFound={konFound}
-                zimFound={zimFound}
               />
             }
           />
@@ -103,12 +91,6 @@ export default function App() {
                 setPosition={setPosition}
                 dropdownOpen={dropdownOpen}
                 setDropdownOpen={setDropdownOpen}
-                setLuffyFound={setLuffyFound}
-                setKonFound={setKonFound}
-                setZimFound={setZimFound}
-                luffyFound={luffyFound}
-                konFound={konFound}
-                zimFound={zimFound}
               />
             }
           />
@@ -117,3 +99,11 @@ export default function App() {
     </>
   );
 }
+
+//Move char locations to backend.
+//Do I create a database instance that gets wiped after the game?
+
+//Highscores to backend
+//Get highscores route
+//Post to highscores route
+////Need to compare to top 5 scores {descneding}
