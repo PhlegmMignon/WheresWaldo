@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Timer from "./components/Timer";
-import Gameboard from "./components/Gameboard";
+import Header from "./components/Header";
 import BoardSelect from "./components/BoardSelect";
 import DuringGame from "./components/DuringGame";
 import PostGame from "./components/PostGame";
@@ -96,11 +96,11 @@ export default function App() {
   return (
     <>
       <div className="">
-        <Gameboard
+        <Header
           gameState={gameState}
           characters={gameImage.characters}
           found={found}
-        ></Gameboard>
+        ></Header>
         {renderGameState()}
       </div>
     </>
