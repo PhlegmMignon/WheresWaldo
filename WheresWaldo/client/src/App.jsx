@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
 import Gameboard from "./components/Gameboard";
 import BoardSelect from "./components/BoardSelect";
+import DuringGame from "./components/DuringGame";
+import PostGame from "./components/PostGame";
 import BoardImages from "./BoardImages.jsx";
 
 export default function App() {
   //DB setup
 
   const gameImages = BoardImages().getImages();
+
+  useEffect(() => {
+    console.log(gameImages);
+  }, [gameImages]);
 
   const [gameState, setGameState] = useState("start");
   const [gameImage, setGameImage] = useState(gameImages[0]);
@@ -22,20 +28,20 @@ export default function App() {
     setFound(foundStatuses);
   };
 
-  const setFoundStatus = async (charId, clickPosition) => {
-    if (charId < 0 || charId > found.length - 1) return false;
-    // const valid = db.validatePosition(gameImage.id, charId, clickPos);
-    if (!valid) {
-      shakeGamePanel();
-      return false;
-    } else {
-      let newFound = found.slice();
-      newFound[charId] = true;
-      setFound(newFound);
-      checkGameWon();
-      return true;
-    }
-  };
+  // const setFoundStatus = async (charId, clickPosition) => {
+  //   if (charId < 0 || charId > found.length - 1) return false;
+  //   // const valid = db.validatePosition(gameImage.id, charId, clickPos);
+  //   if (!valid) {
+  //     shakeGamePanel();
+  //     return false;
+  //   } else {
+  //     let newFound = found.slice();
+  //     newFound[charId] = true;
+  //     setFound(newFound);
+  //     checkGameWon();
+  //     return true;
+  //   }
+  // };
 
   //May need to change timer later
   const renderGameState = () => {
@@ -44,12 +50,22 @@ export default function App() {
         return (
           <BoardSelect
             images={gameImages}
-            selected={gameImage.id}
+            selectedImgSrc={gameImage.src}
             setGameImage={setGameImage}
-            setFound={setInitialFound}
+            setInitialFound={setInitialFound}
             setStartTime={setStartTime}
           />
         );
+      case "inProgress":
+        return (
+          <DuringGame
+            gameImage={gameImage}
+            found={found}
+            // setFoundStatus={setFoundStatus}
+          />
+        );
+      case "end":
+        return <PostGame />;
     }
   };
 
@@ -67,20 +83,25 @@ export default function App() {
   };
 
   //Name for highscore prompt
-  const [name, setName] = useState("test");
+  // const [name, setName] = useState("test");
 
-  //Timer states
-  const [ms, setMs] = useState("");
+  // //Timer states
+  // const [ms, setMs] = useState("");
   const [startTime, setStartTime] = useState(0);
 
-  //Dropdown states
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [position, setPosition] = useState([0, 0]);
+  // //Dropdown states
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
+  // const [position, setPosition] = useState([0, 0]);
 
   return (
     <>
       <div className="App">
-        <Gameboard></Gameboard>
+        <Gameboard
+          gameState={gameState}
+          characters={gameImage.characters}
+          found={found}
+        ></Gameboard>
+        {renderGameState()}
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import luffy from "../images/luffy.png";
-import zim from "../images/Zim.yelling.svg";
-import kon from "../images/kon.webp";
+import luffy from "../assets/luffy.png";
+import zim from "../assets/Zim.yelling.svg";
+import kon from "../assets/kon.webp";
 
 export default function Header(props) {
   const [luffyStyle, setLuffyStyle] = useState("none");
