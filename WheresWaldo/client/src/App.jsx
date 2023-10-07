@@ -95,7 +95,7 @@ export default function App() {
 
   return (
     <>
-      <div className="App">
+      <div className="">
         <Gameboard
           gameState={gameState}
           characters={gameImage.characters}

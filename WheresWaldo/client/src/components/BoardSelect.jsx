@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export default function BoardSelect({
   images,
@@ -7,17 +7,19 @@ export default function BoardSelect({
   setInitialFound,
   setStartTime,
 }) {
-  useEffect(() => {
-    console.log(images);
-  }, [images]);
+  // useEffect(() => {
+  //   console.log(images);
+  // }, [images]);
+
+  //Might need proptypes or something to fix map error
 
   return (
-    <div id="stageSelect">
+    <div className="">
       {images.map((image) => {
         return (
           <div
             key={image.id}
-            className="imageSelect"
+            className="max-w-xl"
             onClick={() => setGameImage(image)}
           >
             <img src={image.src} alt="Picture of stage" />
