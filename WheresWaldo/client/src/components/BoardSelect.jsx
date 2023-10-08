@@ -1,9 +1,11 @@
 // import { useEffect } from "react";
 
-export default function BoardSelect({
+export default function StageSelect({
   images,
-  selectedImgSrc,
+  // selectedImgSrc,
+
   setGameImage,
+  setGameState,
   setInitialFound,
   setStartTime,
 }) {
@@ -12,6 +14,12 @@ export default function BoardSelect({
   // }, [images]);
 
   //Might need proptypes or something to fix map error
+
+  const startGame = () => {
+    setGameState("inProgress");
+    setInitialFound();
+    setStartTime(Date.now());
+  };
 
   return (
     <div className="flex p-12 flex-grow justify-center ">
@@ -27,6 +35,7 @@ export default function BoardSelect({
           </div>
         );
       })}
+      <button onClick={startGame()}>Start</button>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 // import Header from "./components/Header";
 import Timer from "./components/Timer";
 import Header from "./components/Header";
-import BoardSelect from "./components/BoardSelect";
+import StageSelect from "./components/StageSelect";
 import DuringGame from "./components/DuringGame";
 import PostGame from "./components/PostGame";
 import BoardImages from "./BoardImages.jsx";
@@ -48,10 +48,11 @@ export default function App() {
     switch (gameState) {
       case "start":
         return (
-          <BoardSelect
+          <StageSelect
             images={gameImages}
-            selectedImgSrc={gameImage.src}
+            // selectedImgSrc={gameImage.src}
             setGameImage={setGameImage}
+            setGameState={setGameState}
             setInitialFound={setInitialFound}
             setStartTime={setStartTime}
           />
@@ -61,7 +62,10 @@ export default function App() {
           <DuringGame
             gameImage={gameImage}
             found={found}
-            // setFoundStatus={setFoundStatus}
+            setFoundStatus={setFound}
+            setGameState={setGameState}
+            setTime={setTime}
+            startTime={startTime}
           />
         );
       case "end":
@@ -88,6 +92,7 @@ export default function App() {
   // //Timer states
   // const [ms, setMs] = useState("");
   const [startTime, setStartTime] = useState(0);
+  const [time, setTime] = useState(0);
 
   // //Dropdown states
   // const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -100,6 +105,7 @@ export default function App() {
           gameState={gameState}
           characters={gameImage.characters}
           found={found}
+          time={time}
         ></Header>
         {renderGameState()}
       </div>
