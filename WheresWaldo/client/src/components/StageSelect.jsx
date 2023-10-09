@@ -35,7 +35,7 @@ export default function StageSelect({
           </div>
         );
       })}
-      <button onClick={startGame()}>Start</button>
+      <button onClick={startGame}>Start</button>
     </div>
   );
 }

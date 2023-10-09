@@ -12,9 +12,9 @@ export default function App() {
 
   const gameImages = BoardImages().getImages();
 
-  useEffect(() => {
-    console.log(gameImages);
-  }, [gameImages]);
+  // useEffect(() => {
+  //   console.log(gameImages);
+  // }, [gameImages]);
 
   const [gameState, setGameState] = useState("start");
   const [gameImage, setGameImage] = useState(gameImages[0]);
