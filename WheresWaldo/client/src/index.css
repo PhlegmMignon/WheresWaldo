@@ -32,7 +32,7 @@
 body,
 #root {
   max-width: 100%;
-  min-height: 100%;
+  max-height: 100vh;
   overflow: hidden;
 }
 
@@ -44,14 +44,16 @@ body,
 
 #imageContainer {
   display: flex;
+
+  height: 92vh;
   /* flex-grow: 1; */
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 #image {
   max-width: max-content;
-  /* overflow-x: scroll; */
-  /* height: 800px; */
+  height: max-content;
 }
 
 /* #root,
