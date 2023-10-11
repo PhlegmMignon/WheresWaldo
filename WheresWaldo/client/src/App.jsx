@@ -100,7 +100,7 @@ export default function App() {
 
   return (
     <>
-      <div className="">
+      <div className="flex flex-col flex-grow ">
         <Header
           gameState={gameState}
           characters={gameImage.characters}

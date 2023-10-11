@@ -12,7 +12,7 @@ export default function DuringGame({
     console.log(gameImage);
 
     let mouseDown = false;
-    let startX, scrollLeft;
+    let startX, scrollLeft, startY, scrollTop;
     const slider = document.getElementById("imageContainer");
 
     //Makes image draggable
@@ -21,20 +21,33 @@ export default function DuringGame({
       e.preventDefault();
       if (!mouseDown) return;
       // console.log("move");
-      console.log(e.pageX);
+      // console.log(e.pageX);
       const x = e.pageX - slider.offsetLeft;
       const scroll = x - startX;
       slider.scrollLeft = scrollLeft - scroll;
 
-      console.log(scroll);
+      const y = e.pageY - slider.offsetTop;
+      const Yscroll = y - startY;
+      slider.scrollTop = scrollTop - Yscroll;
+
+      // window.scrollBy(scroll);
     };
 
     const startDragging = (e) => {
-      // console.log("dragging");
+      console.log("dragging");
+      // console.log("scrollX" + window.scrollX);
 
       mouseDown = true;
+
+      //X-axis
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
+
+      //Y-axis
+      startY = e.pageY - slider.offsetTop;
+      scrollTop = slider.scrollTop;
+      // console.log(slider);
+      // window.scrollBy(window.scrollX + scrollLeft);
     };
 
     const stopDragging = () => {
@@ -57,14 +70,8 @@ export default function DuringGame({
   }, [gameImage]);
 
   return (
-    <div id="imageContainer" draggable="true" className="">
-      <img
-        id="image"
-        src={gameImage.src}
-        draggable="true"
-        alt=""
-        className="overflow-hidden"
-      />
+    <div id="imageContainer" className="">
+      <img id="image" src={gameImage.src} alt="" className="" />
     </div>
   );
 }

@@ -29,7 +29,6 @@
   margin: 0;
 }
 
-html,
 body,
 #root {
   max-width: 100%;
@@ -37,10 +36,22 @@ body,
   overflow: hidden;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 #imageContainer {
-  width: 157rem;
-  height: 25rem;
-  overflow: auto;
+  display: flex;
+  /* flex-grow: 1; */
+  overflow: scroll;
+}
+
+#image {
+  max-width: max-content;
+  /* overflow-x: scroll; */
+  /* height: 800px; */
 }
 
 /* #root,

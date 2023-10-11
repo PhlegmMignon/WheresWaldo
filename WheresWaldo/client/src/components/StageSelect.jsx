@@ -22,12 +22,12 @@ export default function StageSelect({
   };
 
   return (
-    <div className="flex p-12 flex-grow justify-center ">
+    <div className="flex flex-col justify-center p-12  ">
       {images.map((image) => {
         return (
           <div
             key={image.id}
-            className="flex flex-col items-center text-xl max-w-2xl flex-grow"
+            className="flex flex-col items-center text-xl max-w-2xl flex-grow min-h-full"
             onClick={() => setGameImage(image)}
           >
             <img src={image.src} alt="Picture of stage" />
