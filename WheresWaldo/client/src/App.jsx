@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 // import Header from "./components/Header";
-import Timer from "./components/Timer";
 import Header from "./components/Header";
 import StageSelect from "./components/StageSelect";
 import DuringGame from "./components/DuringGame";
@@ -64,7 +63,6 @@ export default function App() {
             found={found}
             setFoundStatus={setFound}
             setGameState={setGameState}
-            setTime={setTime}
             updateTimer={updateTimer}
           />
         );
@@ -95,7 +93,6 @@ export default function App() {
   const [time, setTime] = useState({ minutes: 0, seconds: 0 });
 
   const updateTimer = () => {
-    //currentTime must be on seperate line or the timer will shake.
     let currentTime = Math.round((Date.now() - startTime) / 1000);
     let seconds = currentTime % 60;
     let minutes = Math.trunc(currentTime / 60);

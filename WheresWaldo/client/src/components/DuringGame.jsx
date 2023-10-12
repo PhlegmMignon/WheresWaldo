@@ -1,27 +1,42 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import Dropdown from "./Dropdown";
 
 export default function DuringGame({
   gameImage,
   found,
   setFoundStatus,
   setGameState,
-  setTime,
   updateTimer,
-  startTime,
 }) {
-  //Makes image draggable
+  const [coordinate, setCoordinate] = useState([0, 0]);
+  const [dropdown, toggleDropdown] = useState(false);
+
+  //Dropdown controls
+  const handleClick = (e, slider) => {
+    // e.preventDefault();
+    let x = e.pageX + slider.scrollLeft;
+    let y = e.pageY + slider.scrollTop;
+    // console.log(x + " " + y);
+    setCoordinate([x, y]);
+  };
+
+  // const assignPosition = () => {};
+
   useEffect(() => {
     console.log(gameImage);
 
+    //Makes image draggable
+    let isDragged = false;
     let mouseDown = false;
     let startX, scrollLeft, startY, scrollTop;
     const slider = document.getElementById("imageContainer");
 
     const move = (e) => {
       e.preventDefault();
+
       if (!mouseDown) return;
+      isDragged = true;
       // console.log("move");
-      // console.log(e.pageX);
       const x = e.pageX - slider.offsetLeft;
       const scroll = x - startX;
       slider.scrollLeft = scrollLeft - scroll;
@@ -32,8 +47,8 @@ export default function DuringGame({
     };
 
     const startDragging = (e) => {
-      console.log("dragging");
-      // console.log("scrollX" + window.scrollX);
+      isDragged = false;
+      // console.log("dragging");
       mouseDown = true;
 
       startX = e.pageX - slider.offsetLeft;
@@ -41,7 +56,6 @@ export default function DuringGame({
 
       startY = e.pageY - slider.offsetTop;
       scrollTop = slider.scrollTop;
-      // console.log(slider);
     };
 
     const stopDragging = () => {
@@ -54,7 +68,12 @@ export default function DuringGame({
     slider.addEventListener("mouseup", stopDragging, false);
     slider.addEventListener("mouseleave", stopDragging, false);
 
-    console.log(slider);
+    //Dropdown controls
+    let ele = document.getElementById("imageContainer");
+    ele.addEventListener("mouseup", (e) => {
+      handleClick(e);
+      dropdown ? toggleDropdown(false) : toggleDropdown(true);
+    });
 
     return () => {
       let newSlider = slider.cloneNode(true);
@@ -62,7 +81,6 @@ export default function DuringGame({
     };
   }, [gameImage]);
 
-  //Timer controls
   setInterval(() => {
     updateTimer();
   }, [1000]);
@@ -70,6 +88,9 @@ export default function DuringGame({
   return (
     <div id="imageContainer" className="">
       <img id="image" src={gameImage.src} alt="" className="" />
+      <Dropdown />
     </div>
   );
 }
+
+//click - dragFalse - openModal -
