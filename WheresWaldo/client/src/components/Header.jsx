@@ -35,6 +35,9 @@ export default function Header({ gameState, characters, found, time }) {
                   </ul>
                 );
               })}
+              <div>
+                {time.minutes}mins {time.seconds}s
+              </div>
             </li>
           </div>
         );

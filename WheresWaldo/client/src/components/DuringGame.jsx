@@ -6,16 +6,16 @@ export default function DuringGame({
   setFoundStatus,
   setGameState,
   setTime,
+  updateTimer,
   startTime,
 }) {
+  //Makes image draggable
   useEffect(() => {
     console.log(gameImage);
 
     let mouseDown = false;
     let startX, scrollLeft, startY, scrollTop;
     const slider = document.getElementById("imageContainer");
-
-    //Makes image draggable
 
     const move = (e) => {
       e.preventDefault();
@@ -29,30 +29,23 @@ export default function DuringGame({
       const y = e.pageY - slider.offsetTop;
       const Yscroll = y - startY;
       slider.scrollTop = scrollTop - Yscroll;
-
-      // window.scrollBy(scroll);
     };
 
     const startDragging = (e) => {
       console.log("dragging");
       // console.log("scrollX" + window.scrollX);
-
       mouseDown = true;
 
-      //X-axis
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
 
-      //Y-axis
       startY = e.pageY - slider.offsetTop;
       scrollTop = slider.scrollTop;
       // console.log(slider);
-      // window.scrollBy(window.scrollX + scrollLeft);
     };
 
     const stopDragging = () => {
       // console.log("stopDrag");
-
       mouseDown = false;
     };
 
@@ -68,6 +61,11 @@ export default function DuringGame({
       slider.parentNode.replaceChild(newSlider, slider);
     };
   }, [gameImage]);
+
+  //Timer controls
+  setInterval(() => {
+    updateTimer();
+  }, [1000]);
 
   return (
     <div id="imageContainer" className="">

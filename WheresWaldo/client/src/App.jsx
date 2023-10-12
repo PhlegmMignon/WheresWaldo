@@ -65,7 +65,7 @@ export default function App() {
             setFoundStatus={setFound}
             setGameState={setGameState}
             setTime={setTime}
-            startTime={startTime}
+            updateTimer={updateTimer}
           />
         );
       case "end":
@@ -92,7 +92,15 @@ export default function App() {
   // //Timer states
   // const [ms, setMs] = useState("");
   const [startTime, setStartTime] = useState(0);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState({ minutes: 0, seconds: 0 });
+
+  const updateTimer = () => {
+    //currentTime must be on seperate line or the timer will shake.
+    let currentTime = Math.round((Date.now() - startTime) / 1000);
+    let seconds = currentTime % 60;
+    let minutes = Math.trunc(currentTime / 60);
+    setTime({ minutes, seconds });
+  };
 
   // //Dropdown states
   // const [dropdownOpen, setDropdownOpen] = useState(false);

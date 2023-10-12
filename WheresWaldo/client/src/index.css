@@ -44,11 +44,8 @@ body,
 
 #imageContainer {
   display: flex;
-
-  height: 92vh;
-  /* flex-grow: 1; */
-  overflow-x: scroll;
-  overflow-y: scroll;
+  height: 93vh;
+  overflow: scroll;
 }
 
 #image {
