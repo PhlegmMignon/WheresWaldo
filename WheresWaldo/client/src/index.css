@@ -43,6 +43,7 @@ body,
 }
 
 #imageContainer {
+  position: relative;
   display: flex;
   height: 93vh;
   overflow: scroll;

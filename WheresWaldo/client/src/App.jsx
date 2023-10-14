@@ -6,6 +6,8 @@ import DuringGame from "./components/DuringGame";
 import PostGame from "./components/PostGame";
 import BoardImages from "./BoardImages.jsx";
 
+// import Dropdown from "./components/Dropdown";
+
 export default function App() {
   //DB setup
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Dropdown from "./Dropdown";
+import Dropdown from "./Dropdown.jsx";
 
 export default function DuringGame({
   gameImage,
@@ -11,16 +11,11 @@ export default function DuringGame({
   const [coordinate, setCoordinate] = useState([0, 0]);
   const [dropdown, toggleDropdown] = useState(false);
 
-  //Dropdown controls
-  const handleClick = (e, slider) => {
-    // e.preventDefault();
-    let x = e.pageX + slider.scrollLeft;
-    let y = e.pageY + slider.scrollTop;
-    // console.log(x + " " + y);
-    setCoordinate([x, y]);
-  };
+  useEffect(() => {
+    let ele = document.getElementById("dropdown");
 
-  // const assignPosition = () => {};
+    console.log(ele);
+  }, [dropdown]);
 
   useEffect(() => {
     console.log(gameImage);
@@ -30,6 +25,18 @@ export default function DuringGame({
     let mouseDown = false;
     let startX, scrollLeft, startY, scrollTop;
     const slider = document.getElementById("imageContainer");
+
+    const startDragging = (e) => {
+      isDragged = false;
+      // console.log("dragging");
+      mouseDown = true;
+
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+
+      startY = e.pageY - slider.offsetTop;
+      scrollTop = slider.scrollTop;
+    };
 
     const move = (e) => {
       e.preventDefault();
@@ -46,18 +53,6 @@ export default function DuringGame({
       slider.scrollTop = scrollTop - Yscroll;
     };
 
-    const startDragging = (e) => {
-      isDragged = false;
-      // console.log("dragging");
-      mouseDown = true;
-
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-
-      startY = e.pageY - slider.offsetTop;
-      scrollTop = slider.scrollTop;
-    };
-
     const stopDragging = () => {
       // console.log("stopDrag");
       mouseDown = false;
@@ -71,14 +66,35 @@ export default function DuringGame({
     //Dropdown controls
     let ele = document.getElementById("imageContainer");
     ele.addEventListener("mouseup", (e) => {
-      handleClick(e);
-      dropdown ? toggleDropdown(false) : toggleDropdown(true);
+      handleClick(e, slider);
+      // if (isDragged) {
+      //   return;
+      // } else {
+      //   if (dropdown) {
+      //     return;
+      //   } else {
+      //     toggleDropdown(true);
+      //   }
+      // }
+      if (isDragged == false && mouseDown == false) {
+        toggleDropdown(true);
+      } else {
+        toggleDropdown(false);
+      }
     });
 
-    return () => {
-      let newSlider = slider.cloneNode(true);
-      slider.parentNode.replaceChild(newSlider, slider);
+    const handleClick = (e, slider) => {
+      // e.preventDefault();
+      let x = e.pageX + slider.scrollLeft;
+      let y = e.pageY + slider.scrollTop;
+      // console.log(x + " " + y);
+      setCoordinate([x, y]);
     };
+
+    // return () => {
+    //   let newSlider = slider.cloneNode(true);
+    //   slider.parentNode.replaceChild(newSlider, slider);
+    // };
   }, [gameImage]);
 
   setInterval(() => {
@@ -86,9 +102,17 @@ export default function DuringGame({
   }, [1000]);
 
   return (
-    <div id="imageContainer" className="">
+    <div id="imageContainer">
       <img id="image" src={gameImage.src} alt="" className="" />
-      <Dropdown />
+      {dropdown ? (
+        <Dropdown
+          gameImage={gameImage}
+          setFoundStatus={setFoundStatus}
+          coordinate={coordinate}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
