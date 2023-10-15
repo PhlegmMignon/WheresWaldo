@@ -6,8 +6,6 @@ import DuringGame from "./components/DuringGame";
 import PostGame from "./components/PostGame";
 import BoardImages from "./BoardImages.jsx";
 
-// import Dropdown from "./components/Dropdown";
-
 export default function App() {
   //DB setup
 
@@ -29,20 +27,20 @@ export default function App() {
     setFound(foundStatuses);
   };
 
-  // const setFoundStatus = async (charId, clickPosition) => {
-  //   if (charId < 0 || charId > found.length - 1) return false;
-  //   // const valid = db.validatePosition(gameImage.id, charId, clickPos);
-  //   if (!valid) {
-  //     shakeGamePanel();
-  //     return false;
-  //   } else {
-  //     let newFound = found.slice();
-  //     newFound[charId] = true;
-  //     setFound(newFound);
-  //     checkGameWon();
-  //     return true;
-  //   }
-  // };
+  const setFoundStatus = async (charId, clickPosition) => {
+    if (charId < 0 || charId > found.length - 1) return false;
+    const valid = db.validatePosition(gameImage.id, charId, clickPos);
+    if (!valid) {
+      // shakeGamePanel();
+      return false;
+    } else {
+      let newFound = found.slice();
+      newFound[charId] = true;
+      setFound(newFound);
+      // checkGameWon();
+      return true;
+    }
+  };
 
   //May need to change timer later
   const renderGameState = () => {
@@ -63,7 +61,7 @@ export default function App() {
           <DuringGame
             gameImage={gameImage}
             found={found}
-            setFoundStatus={setFound}
+            setFoundStatus={setFoundStatus}
             setGameState={setGameState}
             updateTimer={updateTimer}
           />
@@ -90,7 +88,6 @@ export default function App() {
   // const [name, setName] = useState("test");
 
   // //Timer states
-  // const [ms, setMs] = useState("");
   const [startTime, setStartTime] = useState(0);
   const [time, setTime] = useState({ minutes: 0, seconds: 0 });
 
@@ -100,10 +97,6 @@ export default function App() {
     let minutes = Math.trunc(currentTime / 60);
     setTime({ minutes, seconds });
   };
-
-  // //Dropdown states
-  // const [dropdownOpen, setDropdownOpen] = useState(false);
-  // const [position, setPosition] = useState([0, 0]);
 
   return (
     <>
@@ -121,5 +114,10 @@ export default function App() {
 }
 
 //Character states
+//Touchscreen events
+//https://stackoverflow.com/questions/1517924/javascript-mapping-touch-events-to-mouse-events
+//https://stackoverflow.com/questions/64128656/need-to-convert-mouse-events-to-touch-events-for-mobile-using-html-canvas
+//Dropdown css
+//End timer and record to leadboard
 
-//Timer states
+//Deploy

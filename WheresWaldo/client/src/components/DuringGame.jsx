@@ -67,15 +67,7 @@ export default function DuringGame({
     let ele = document.getElementById("imageContainer");
     ele.addEventListener("mouseup", (e) => {
       handleClick(e, slider);
-      // if (isDragged) {
-      //   return;
-      // } else {
-      //   if (dropdown) {
-      //     return;
-      //   } else {
-      //     toggleDropdown(true);
-      //   }
-      // }
+
       if (isDragged == false && mouseDown == false) {
         toggleDropdown(true);
       } else {

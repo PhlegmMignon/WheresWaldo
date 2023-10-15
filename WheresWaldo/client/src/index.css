@@ -16,6 +16,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --cust-black: #242424;
 }
 
 /* a {
@@ -52,6 +54,12 @@ body,
 #image {
   max-width: max-content;
   height: max-content;
+}
+
+@layer components {
+  #dropdown {
+    background-color: var(--cust-black);
+  }
 }
 
 /* #root,
