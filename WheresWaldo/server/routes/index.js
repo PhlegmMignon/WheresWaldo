@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const Score = require("../models/score");
+const Character = require("../models/character");
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
@@ -22,7 +23,7 @@ router.post("/scores", [
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
     const score = new Score({
-      map: req.map,
+      map: req.body.map,
       score: req.score,
       name: req.body.name,
     });
@@ -39,17 +40,21 @@ router.post("/scores", [
 router.post(
   "/",
   asyncHandler(async (req, res) => {
-    const char = await Character.find({
+    console.log(req.body);
+    const char = await Character.findOne({
       map: req.body.map,
-      name: req.body.name,
+      name: req.body.charName,
     }).exec();
 
-    if (char.X[0] <= req.body.x <= char.X[1]) {
-      if (char.Y[0] <= req.body.y <= char.Y[1]) {
+    console.log(char);
+
+    if (char.Xmin <= req.body.coordinate[0] <= char.Xmax) {
+      if (char.Ymin <= req.body.coordinate[1] <= char.Ymax) {
         res.status(200).json({ found: true });
+      } else {
+        res.status(200).json({ found: false });
       }
     }
-    res.status(200).json({ found: false });
   })
 );
 

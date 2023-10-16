@@ -7,8 +7,8 @@ const ScoreSchema = new Schema({
   map: { type: String, required: true },
 });
 
-ScoreInstanceSchema.virtual("score_formatted").get(function () {
-  //
-});
+// ScoreInstanceSchema.virtual("score_formatted").get(function () {
+//   //
+// });
 
 module.exports = mongoose.model("Score", ScoreSchema);

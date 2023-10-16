@@ -11,7 +11,9 @@ export default function Dropdown({ gameImage, setFoundStatus, coordinate }) {
 
   const handleClick = (e) => {
     e.stopPropagation();
-    // e.target.id;
+    const id = e.target.id.charAt(e.target.id.length - 1);
+    // console.log(coordinate);
+    setFoundStatus(gameImage.name, gameImage.characters[id].name, coordinate);
   };
 
   return (
@@ -23,13 +25,14 @@ export default function Dropdown({ gameImage, setFoundStatus, coordinate }) {
       <li className="list-none flex flex-col p-2 gap-2 " id="charList">
         {gameImage.characters.map((char) => {
           return (
-            <ul
-              key={char.id}
-              id={"char" + char.id}
-              onClick={handleClick}
-              className="flex justify-center"
-            >
-              <img className="h-16 w-auto" src={char.src} alt="" />
+            <ul key={char.id} className="flex justify-center">
+              <img
+                id={"char" + char.id}
+                onClick={handleClick}
+                className="h-16 w-auto"
+                src={char.src}
+                alt=""
+              />
             </ul>
           );
         })}

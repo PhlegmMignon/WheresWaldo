@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const router = express.Router();
 require("dotenv").config();
@@ -13,8 +14,8 @@ const Score = require("./models/score.js");
 var indexRouter = require("./routes/index");
 
 var app = express();
-// app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+// app.use(cors());
 
 //Connects to mongodb
 mongoose.set("strictQuery", false);
@@ -35,8 +36,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 //Idk if needed
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 

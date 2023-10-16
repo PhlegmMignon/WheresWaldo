@@ -77,9 +77,10 @@ export default function DuringGame({
 
     const handleClick = (e, slider) => {
       // e.preventDefault();
-      let x = e.pageX + slider.scrollLeft;
-      let y = e.pageY + slider.scrollTop;
-      // console.log(x + " " + y);
+      let dim = e.target.getBoundingClientRect();
+      let x = e.pageX - dim.left;
+      let y = e.pageY - dim.top;
+      console.log(x + " " + y);
       setCoordinate([x, y]);
     };
 
@@ -108,5 +109,3 @@ export default function DuringGame({
     </div>
   );
 }
-
-//click - dragFalse - openModal -

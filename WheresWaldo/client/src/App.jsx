@@ -27,8 +27,27 @@ export default function App() {
     setFound(foundStatuses);
   };
 
-  const setFoundStatus = async (charId, clickPosition) => {
-    if (charId < 0 || charId > found.length - 1) return false;
+  const setFoundStatus = async (map, charName, coordinate) => {
+    // if (charId < 0 || charId > found.length - 1) return false;
+
+    const details = { map, charName, coordinate };
+
+    fetch("http://localhost:3000/", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:5173",
+      },
+      body: JSON.stringify(details),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+      });
     // const valid = db.validatePosition(gameImage.id, charId, clickPos);
     // if (!valid) {
     //   // shakeGamePanel();
