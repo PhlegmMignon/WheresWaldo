@@ -29,17 +29,18 @@ export default function App() {
 
   const setFoundStatus = async (charId, clickPosition) => {
     if (charId < 0 || charId > found.length - 1) return false;
-    const valid = db.validatePosition(gameImage.id, charId, clickPos);
-    if (!valid) {
-      // shakeGamePanel();
-      return false;
-    } else {
-      let newFound = found.slice();
-      newFound[charId] = true;
-      setFound(newFound);
-      // checkGameWon();
-      return true;
-    }
+    // const valid = db.validatePosition(gameImage.id, charId, clickPos);
+    // if (!valid) {
+    //   // shakeGamePanel();
+    //   return false;
+    // } else {
+    //   let newFound = found.slice();
+    //   newFound[charId] = true;
+    //   setFound(newFound);
+    //   // checkGameWon();
+    //   return true;
+    // }
+    // console.log(charId + " " + clickPosition);
   };
 
   //May need to change timer later

@@ -59,6 +59,7 @@ body,
 @layer components {
   #dropdown {
     background-color: var(--cust-black);
+    width: 80px;
   }
 }
 
