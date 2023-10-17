@@ -5,17 +5,18 @@ export default function DuringGame({
   gameImage,
   found,
   setFoundStatus,
-  setGameState,
   updateTimer,
 }) {
   const [coordinate, setCoordinate] = useState([0, 0]);
   const [dropdown, toggleDropdown] = useState(false);
 
   useEffect(() => {
-    let ele = document.getElementById("dropdown");
+    let interval = setInterval(() => {
+      updateTimer();
+    }, [1000]);
 
-    console.log(ele);
-  }, [dropdown]);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     console.log(gameImage);
@@ -90,13 +91,9 @@ export default function DuringGame({
     // };
   }, [gameImage]);
 
-  setInterval(() => {
-    updateTimer();
-  }, [1000]);
-
   return (
     <div id="imageContainer">
-      <img id="image" src={gameImage.src} alt="" className="" />
+      <img id="image" src={gameImage.src} alt="picture of convention" />
       {dropdown ? (
         <Dropdown
           gameImage={gameImage}

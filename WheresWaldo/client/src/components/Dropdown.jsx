@@ -13,7 +13,12 @@ export default function Dropdown({ gameImage, setFoundStatus, coordinate }) {
     e.stopPropagation();
     const id = e.target.id.charAt(e.target.id.length - 1);
     // console.log(coordinate);
-    setFoundStatus(gameImage.name, gameImage.characters[id].name, coordinate);
+    setFoundStatus(
+      gameImage.name,
+      gameImage.characters[id].name,
+      coordinate,
+      id
+    );
   };
 
   return (

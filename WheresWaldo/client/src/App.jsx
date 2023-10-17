@@ -7,8 +7,6 @@ import PostGame from "./components/PostGame";
 import BoardImages from "./BoardImages.jsx";
 
 export default function App() {
-  //DB setup
-
   const gameImages = BoardImages().getImages();
 
   // useEffect(() => {
@@ -27,10 +25,8 @@ export default function App() {
     setFound(foundStatuses);
   };
 
-  const setFoundStatus = async (map, charName, coordinate) => {
-    // if (charId < 0 || charId > found.length - 1) return false;
-
-    const details = { map, charName, coordinate };
+  const setFoundStatus = async (map, charName, coordinate, id) => {
+    const details = { map, charName, coordinate, id };
 
     fetch("http://localhost:3000/", {
       method: "POST",
@@ -46,7 +42,16 @@ export default function App() {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
+        if (!res.found) {
+          //shakeGamePanel();
+        } else {
+          console.log(res.found);
+          let tempFound = found;
+          tempFound[res.charPosition] = res.found;
+          console.log(tempFound);
+          setFound(tempFound);
+          checkWin(found);
+        }
       });
     // const valid = db.validatePosition(gameImage.id, charId, clickPos);
     // if (!valid) {
@@ -62,6 +67,15 @@ export default function App() {
     // console.log(charId + " " + clickPosition);
   };
 
+  const checkWin = (found) => {
+    console.log(found);
+    for (let i = 0; i < found.length; i++) {
+      if (!found[i]) return;
+    }
+    console.log("end");
+    setGameState("end");
+  };
+
   //May need to change timer later
   const renderGameState = () => {
     switch (gameState) {
@@ -69,7 +83,6 @@ export default function App() {
         return (
           <StageSelect
             images={gameImages}
-            // selectedImgSrc={gameImage.src}
             setGameImage={setGameImage}
             setGameState={setGameState}
             setInitialFound={setInitialFound}
@@ -82,12 +95,17 @@ export default function App() {
             gameImage={gameImage}
             found={found}
             setFoundStatus={setFoundStatus}
-            setGameState={setGameState}
             updateTimer={updateTimer}
           />
         );
       case "end":
-        return <PostGame />;
+        return (
+          <PostGame
+            time={time}
+            gameImage={gameImage}
+            setGameState={setGameState}
+          />
+        );
     }
   };
 
