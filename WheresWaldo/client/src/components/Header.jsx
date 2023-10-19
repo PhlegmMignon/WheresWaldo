@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function Header({ gameState, characters, found, time }) {
   const renderHeader = (state) => {
     switch (state) {
@@ -70,6 +68,3 @@ export default function Header({ gameState, characters, found, time }) {
 
   return <>{renderHeader(gameState)}</>;
 }
-
-//Make timer after DuringGame. Try to make timer only update once a second
-//Check if found crossthrough works later

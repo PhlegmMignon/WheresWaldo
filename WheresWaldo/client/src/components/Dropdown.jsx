@@ -4,18 +4,9 @@ export default function Dropdown({
   coordinate,
   setModal,
 }) {
-  // useEffect(() => {
-  //   const ele = document.getElementById("charList");
-  //   for (const child of ele.children) {
-  //     const id = child.id.charAt(child.id.length - 1);
-  //     child.addEventListener("click", setFoundStatus(e, id, coordinate));
-  //   }
-  // }, [gameImage]);
-
   const handleClick = (e) => {
     e.stopPropagation();
     const id = e.target.id.charAt(e.target.id.length - 1);
-    // console.log(coordinate);
     setFoundStatus(
       gameImage.name,
       gameImage.characters[id].name,

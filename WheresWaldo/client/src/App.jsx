@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import Header from "./components/Header";
 import Header from "./components/Header";
 import StageSelect from "./components/StageSelect";
 import DuringGame from "./components/DuringGame";
@@ -8,10 +7,6 @@ import BoardImages from "./BoardImages.jsx";
 
 export default function App() {
   const gameImages = BoardImages().getImages();
-
-  // useEffect(() => {
-  //   console.log(gameImages);
-  // }, [gameImages]);
 
   const [gameState, setGameState] = useState("start");
   const [gameImage, setGameImage] = useState(gameImages[0]);
@@ -55,18 +50,6 @@ export default function App() {
           checkWin(found);
         }
       });
-    // const valid = db.validatePosition(gameImage.id, charId, clickPos);
-    // if (!valid) {
-    //   // shakeGamePanel();
-    //   return false;
-    // } else {
-    //   let newFound = found.slice();
-    //   newFound[charId] = true;
-    //   setFound(newFound);
-    //   // checkGameWon();
-    //   return true;
-    // }
-    // console.log(charId + " " + clickPosition);
   };
 
   const checkWin = (found) => {
@@ -119,7 +102,6 @@ export default function App() {
             updateTimer={updateTimer}
             getScores={getScores}
             modalFound={modalFound}
-            setModalFound={setModalFound}
           />
         );
       case "end":
@@ -129,30 +111,13 @@ export default function App() {
             gameImage={gameImage}
             setGameState={setGameState}
             scores={scores}
-            setScores={setScores}
             getScores={getScores}
           />
         );
     }
   };
 
-  const toggleGameState = () => {
-    switch (gameState) {
-      case "start":
-        setGameState("inProgress");
-        break;
-      case "inProgress":
-        setGameState("end");
-        break;
-      case "end":
-        setGameState("start");
-    }
-  };
-
-  //Name for highscore prompt
-  // const [name, setName] = useState("test");
-
-  // //Timer states
+  //Timer states
   const [startTime, setStartTime] = useState(0);
   const [time, setTime] = useState({ minutes: 0, seconds: 0 });
 
@@ -178,7 +143,6 @@ export default function App() {
   );
 }
 
-//Character states
 //Touchscreen events
 //https://stackoverflow.com/questions/1517924/javascript-mapping-touch-events-to-mouse-events
 //https://stackoverflow.com/questions/64128656/need-to-convert-mouse-events-to-touch-events-for-mobile-using-html-canvas

@@ -31,6 +31,9 @@ export default function ScorePrompt({
         return;
       })
       .catch((err) => console.log("Err on score post" + err));
+
+    //Updates scores with new highscore
+    getScores();
   };
 
   const updateHighscore = () => {

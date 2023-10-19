@@ -9,7 +9,6 @@ export default function DuringGame({
   updateTimer,
   getScores,
   modalFound,
-  setModalFound,
 }) {
   const [coordinate, setCoordinate] = useState([0, 0]);
   const [dropdown, toggleDropdown] = useState(false);
@@ -83,19 +82,14 @@ export default function DuringGame({
       }
     });
 
-    const handleClick = (e, slider) => {
+    const handleClick = (e) => {
       // e.preventDefault();
       let dim = e.target.getBoundingClientRect();
       let x = e.pageX - dim.left;
       let y = e.pageY - dim.top;
-      // console.log(x + " " + y);
+
       setCoordinate([x, y]);
     };
-
-    // return () => {
-    //   let newSlider = slider.cloneNode(true);
-    //   slider.parentNode.replaceChild(newSlider, slider);
-    // };
   }, [gameImage]);
 
   return (

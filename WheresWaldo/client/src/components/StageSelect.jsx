@@ -2,19 +2,11 @@
 
 export default function StageSelect({
   images,
-  // selectedImgSrc,
-
   setGameImage,
   setGameState,
   setInitialFound,
   setStartTime,
 }) {
-  // useEffect(() => {
-  //   console.log(images);
-  // }, [images]);
-
-  //Might need proptypes or something to fix map error
-
   const startGame = () => {
     setGameState("inProgress");
     setInitialFound();

@@ -7,7 +7,6 @@ export default function PostGame({
   gameImage,
   setGameState,
   scores,
-  setScores,
   getScores,
 }) {
   const [isHighscore, setIsHighscore] = useState(false);
@@ -19,7 +18,6 @@ export default function PostGame({
   function detectHighScore(time, scores) {
     let position;
     let seconds = time.minutes * 60 + time.seconds;
-    // console.log("scores", scores);
 
     if (scores.length < 5) {
       position = scores.length;
@@ -31,13 +29,7 @@ export default function PostGame({
         }
       }
     }
-    // console.log(position);
     if (position != undefined) {
-      // let tempArr = scores;
-      // tempArr.splice(position, 0, time);
-      // tempArr = tempArr.slice(0, 6);
-      // console.log(tempArr);
-      // setScores(tempArr);
       setIsHighscore(true);
     }
   }
@@ -58,8 +50,6 @@ export default function PostGame({
     </div>
   );
 }
-
-//Handle incorrect char select
 
 //Questions:
 //What would be a better way to handle detectHighscore and getScores?

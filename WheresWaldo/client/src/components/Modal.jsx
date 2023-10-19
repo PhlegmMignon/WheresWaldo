@@ -50,6 +50,3 @@ export default function Modal({ modalFound, modal, setModal }) {
     );
   }
 }
-
-//Prob would be better to have duplicate lines of modal styles in component rather than having to switch
-//tabs to index.css for styles
