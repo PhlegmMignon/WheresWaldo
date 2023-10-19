@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 
 export default function Header({ gameState, characters, found, time }) {
-  useEffect(() => {
-    console.log(found);
-  }, [gameState, found]);
-
   const renderHeader = (state) => {
     switch (state) {
       case "start":

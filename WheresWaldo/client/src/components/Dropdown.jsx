@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function Dropdown({ gameImage, setFoundStatus, coordinate }) {
   // useEffect(() => {
   //   const ele = document.getElementById("charList");

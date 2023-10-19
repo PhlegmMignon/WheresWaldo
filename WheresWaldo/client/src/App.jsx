@@ -45,10 +45,10 @@ export default function App() {
         if (!res.found) {
           //shakeGamePanel();
         } else {
-          console.log(res.found);
+          // console.log(res.found);
           let tempFound = found;
           tempFound[res.charPosition] = res.found;
-          console.log(tempFound);
+          // console.log(tempFound);
           setFound(tempFound);
           checkWin(found);
         }
@@ -68,12 +68,31 @@ export default function App() {
   };
 
   const checkWin = (found) => {
-    console.log(found);
     for (let i = 0; i < found.length; i++) {
       if (!found[i]) return;
     }
-    console.log("end");
     setGameState("end");
+  };
+
+  const [scores, setScores] = useState("");
+  const getScores = () => {
+    fetch("http://localhost:3000/scores", {
+      method: "GET",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:5173",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        setScores(res);
+        return;
+      })
+      .catch((err) => console.log("error on score get" + err));
   };
 
   //May need to change timer later
@@ -96,6 +115,7 @@ export default function App() {
             found={found}
             setFoundStatus={setFoundStatus}
             updateTimer={updateTimer}
+            getScores={getScores}
           />
         );
       case "end":
@@ -104,6 +124,8 @@ export default function App() {
             time={time}
             gameImage={gameImage}
             setGameState={setGameState}
+            scores={scores}
+            setScores={setScores}
           />
         );
     }
