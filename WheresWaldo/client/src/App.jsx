@@ -126,6 +126,7 @@ export default function App() {
             setGameState={setGameState}
             scores={scores}
             setScores={setScores}
+            getScores={getScores}
           />
         );
     }

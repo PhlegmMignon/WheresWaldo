@@ -8,6 +8,7 @@ export default function PostGame({
   setGameState,
   scores,
   setScores,
+  getScores,
 }) {
   const [isHighscore, setIsHighscore] = useState(false);
 
@@ -18,20 +19,25 @@ export default function PostGame({
   function detectHighScore(time, scores) {
     let position;
     let seconds = time.minutes * 60 + time.seconds;
-    console.log(scores);
-    for (let i = 0; i < scores.length; i++) {
-      if (seconds < scores[i].score) {
-        position = i;
-        break;
+    // console.log("scores", scores);
+
+    if (scores.length < 5) {
+      position = scores.length;
+    } else {
+      for (let i = 0; i < scores.length; i++) {
+        if (seconds < scores[i].score) {
+          position = i;
+          break;
+        }
       }
     }
-    console.log(position);
+    // console.log(position);
     if (position != undefined) {
-      let tempArr = scores;
-      tempArr.splice(position, 0, time);
-      tempArr = tempArr.slice(0, 6);
-      console.log(tempArr);
-      setScores(tempArr);
+      // let tempArr = scores;
+      // tempArr.splice(position, 0, time);
+      // tempArr = tempArr.slice(0, 6);
+      // console.log(tempArr);
+      // setScores(tempArr);
       setIsHighscore(true);
     }
   }
@@ -44,15 +50,17 @@ export default function PostGame({
           setIsHighscore={setIsHighscore}
           time={time}
           gameImage={gameImage}
+          getScores={getScores}
         />
       ) : (
-        <Leaderboard />
+        <Leaderboard scores={scores} setGameState={setGameState} />
       )}
     </div>
   );
 }
 
 //Handle incorrect char select
+//Start new game
 
 //Questions:
 //What would be a better way to handle detectHighscore and getScores?

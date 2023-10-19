@@ -14,10 +14,10 @@ export default function Header({ gameState, characters, found, time }) {
         return (
           <div className="flex justify-center items-center gap-6 bg-yellow-400 text-2xl text-center text-gray-900 p-2">
             <div>Find the characters! </div>
-            <li className="flex justify-between gap-6">
+            <ul className="flex justify-between gap-6">
               {characters.map((char, index) => {
                 return (
-                  <ul key={char.id} className="text-lg">
+                  <li key={char.id} className="text-lg">
                     <img
                       className="h-16"
                       src={char.src}
@@ -28,10 +28,10 @@ export default function Header({ gameState, characters, found, time }) {
                     ) : (
                       <div>{char.name}</div>
                     )}
-                  </ul>
+                  </li>
                 );
               })}
-            </li>
+            </ul>
             <div>
               {time.minutes}mins {time.seconds}s
             </div>

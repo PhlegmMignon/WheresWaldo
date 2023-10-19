@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-export default function ScorePrompt({ setIsHighscore, time, gameImage }) {
+export default function ScorePrompt({
+  setIsHighscore,
+  time,
+  gameImage,
+  getScores,
+}) {
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("asd");
 
     const details = { name: name, score: time, map: gameImage.name };
 
@@ -31,6 +34,7 @@ export default function ScorePrompt({ setIsHighscore, time, gameImage }) {
   };
 
   const updateHighscore = () => {
+    getScores();
     setIsHighscore(false);
   };
 

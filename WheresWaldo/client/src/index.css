@@ -65,6 +65,10 @@ body,
   #scorePrompt {
     background-color: var(--cust-black);
   }
+
+  #leaderboard {
+    background-color: var(--cust-black);
+  }
 }
 
 /* #root,
