@@ -1,4 +1,9 @@
-export default function Dropdown({ gameImage, setFoundStatus, coordinate }) {
+export default function Dropdown({
+  gameImage,
+  setFoundStatus,
+  coordinate,
+  setModal,
+}) {
   // useEffect(() => {
   //   const ele = document.getElementById("charList");
   //   for (const child of ele.children) {
@@ -17,6 +22,7 @@ export default function Dropdown({ gameImage, setFoundStatus, coordinate }) {
       coordinate,
       id
     );
+    setModal(true);
   };
 
   return (
@@ -34,7 +40,7 @@ export default function Dropdown({ gameImage, setFoundStatus, coordinate }) {
                 onClick={handleClick}
                 className="h-16 w-auto"
                 src={char.src}
-                alt=""
+                alt={"image of " + char.name}
               />
             </ul>
           );

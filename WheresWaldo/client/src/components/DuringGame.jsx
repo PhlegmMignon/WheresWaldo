@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Dropdown from "./Dropdown.jsx";
+import Modal from "./Modal.jsx";
 
 export default function DuringGame({
   gameImage,
@@ -7,9 +8,12 @@ export default function DuringGame({
   setFoundStatus,
   updateTimer,
   getScores,
+  modalFound,
+  setModalFound,
 }) {
   const [coordinate, setCoordinate] = useState([0, 0]);
   const [dropdown, toggleDropdown] = useState(false);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     let interval = setInterval(() => {
@@ -97,11 +101,17 @@ export default function DuringGame({
   return (
     <div id="imageContainer">
       <img id="image" src={gameImage.src} alt="picture of convention" />
+      {modal ? (
+        <Modal modalFound={modalFound} modal={modal} setModal={setModal} />
+      ) : (
+        ""
+      )}
       {dropdown ? (
         <Dropdown
           gameImage={gameImage}
           setFoundStatus={setFoundStatus}
           coordinate={coordinate}
+          setModal={setModal}
         />
       ) : (
         ""

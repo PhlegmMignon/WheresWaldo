@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import Header from "./components/Header";
 import Header from "./components/Header";
 import StageSelect from "./components/StageSelect";
@@ -16,6 +16,7 @@ export default function App() {
   const [gameState, setGameState] = useState("start");
   const [gameImage, setGameImage] = useState(gameImages[0]);
   const [found, setFound] = useState([false]);
+  const [modalFound, setModalFound] = useState(false);
 
   const setInitialFound = () => {
     let foundStatuses = [];
@@ -43,13 +44,14 @@ export default function App() {
       })
       .then((res) => {
         if (!res.found) {
-          //shakeGamePanel();
+          console.log(res.found);
+          setModalFound(res.found);
         } else {
-          // console.log(res.found);
+          console.log(res.found);
           let tempFound = found;
           tempFound[res.charPosition] = res.found;
-          // console.log(tempFound);
           setFound(tempFound);
+          setModalFound(res.found);
           checkWin(found);
         }
       });
@@ -116,6 +118,8 @@ export default function App() {
             setFoundStatus={setFoundStatus}
             updateTimer={updateTimer}
             getScores={getScores}
+            modalFound={modalFound}
+            setModalFound={setModalFound}
           />
         );
       case "end":

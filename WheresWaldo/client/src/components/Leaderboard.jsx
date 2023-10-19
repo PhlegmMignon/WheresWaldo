@@ -1,10 +1,4 @@
-import { useEffect } from "react";
-
 export default function Leaderboard({ scores, setGameState }) {
-  useEffect(() => {
-    console.log(scores);
-  });
-
   const convertTime = (time) => {
     let secs = time % 60;
     let mins = Math.trunc(time / 60);

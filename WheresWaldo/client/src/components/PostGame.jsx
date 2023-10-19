@@ -60,7 +60,6 @@ export default function PostGame({
 }
 
 //Handle incorrect char select
-//Start new game
 
 //Questions:
 //What would be a better way to handle detectHighscore and getScores?
