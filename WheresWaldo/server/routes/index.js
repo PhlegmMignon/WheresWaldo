@@ -6,10 +6,10 @@ const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
 /* GET score */
-router.get(
-  "/scores",
+router.post(
+  "/getScores",
   asyncHandler(async function (req, res) {
-    let scores = await Score.find({ map: "convention" })
+    let scores = await Score.find({ map: req.body.map })
       .sort({ score: 1 })
       .limit(5)
       .exec();
