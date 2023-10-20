@@ -97,7 +97,6 @@ export default function App() {
         return (
           <DuringGame
             gameImage={gameImage}
-            found={found}
             setFoundStatus={setFoundStatus}
             updateTimer={updateTimer}
             getScores={getScores}

@@ -15,7 +15,6 @@ var indexRouter = require("./routes/index");
 
 var app = express();
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-// app.use(cors());
 
 //Connects to mongodb
 mongoose.set("strictQuery", false);
@@ -34,10 +33,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
-//Idk if needed
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 

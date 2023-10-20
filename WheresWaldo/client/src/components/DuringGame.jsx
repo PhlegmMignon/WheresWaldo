@@ -4,7 +4,6 @@ import Modal from "./Modal.jsx";
 
 export default function DuringGame({
   gameImage,
-  found,
   setFoundStatus,
   updateTimer,
   getScores,

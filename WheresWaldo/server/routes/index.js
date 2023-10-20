@@ -53,22 +53,18 @@ router.post(
       name: req.body.charName,
     }).exec();
 
-    console.log(char.Xmin, char.Xmax, req.body.coordinate);
-
     if (
       char.Xmin <= req.body.coordinate[0] &&
       req.body.coordinate[0] <= char.Xmax
     ) {
-      console.log("pass x check");
       if (
         char.Ymin <= req.body.coordinate[1] &&
         req.body.coordinate[1] <= char.Ymax
       ) {
         res.status(200).json({ charPosition: req.body.id, found: true });
-      } else {
-        console.log("false server");
-        res.status(200).json({ found: false });
       }
+    } else {
+      res.status(200).json({ found: false });
     }
   })
 );
