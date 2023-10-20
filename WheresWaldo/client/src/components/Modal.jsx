@@ -16,7 +16,7 @@ export default function Modal({ modalFound, modal, setModal }) {
 
       let pos = ele.getBoundingClientRect();
       console.log(pos);
-      ele.style.left = pos.left + "px";
+      ele.style.left = pos.left - 30 + "px";
       ele.style.top = pos.top + 50 + "px";
 
       setTimeout(() => {
