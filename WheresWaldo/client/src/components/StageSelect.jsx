@@ -14,7 +14,7 @@ export default function StageSelect({
   };
 
   return (
-    <div className="flex flex-col justify-center p-12  ">
+    <div className="flex flex-col items-center gap-4 p-12  ">
       {images.map((image) => {
         return (
           <div
@@ -23,11 +23,13 @@ export default function StageSelect({
             onClick={() => setGameImage(image)}
           >
             <img src={image.src} alt="Picture of stage" />
-            <div>Convention</div>
+            <div className="text-lg">{image.name}</div>
           </div>
         );
       })}
-      <button onClick={startGame}>Start</button>
+      <button className="text-xl" onClick={startGame}>
+        Start
+      </button>
     </div>
   );
 }
