@@ -39,10 +39,8 @@ export default function App() {
       })
       .then((res) => {
         if (!res.found) {
-          console.log(res.found);
           setModalFound(res.found);
         } else {
-          console.log(res.found);
           let tempFound = found;
           tempFound[res.charPosition] = res.found;
           setFound(tempFound);
@@ -60,15 +58,18 @@ export default function App() {
   };
 
   const [scores, setScores] = useState("");
-  const getScores = () => {
-    fetch("http://localhost:3000/scores", {
-      method: "GET",
+  const getScores = (map) => {
+    const details = { map };
+
+    fetch("http://localhost:3000/getScores", {
+      method: "POST",
       mode: "cors",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "http://localhost:5173",
       },
+      body: JSON.stringify(details),
     })
       .then((res) => {
         return res.json();
@@ -141,11 +142,3 @@ export default function App() {
     </>
   );
 }
-
-//Touchscreen events
-//https://stackoverflow.com/questions/1517924/javascript-mapping-touch-events-to-mouse-events
-//https://stackoverflow.com/questions/64128656/need-to-convert-mouse-events-to-touch-events-for-mobile-using-html-canvas
-//Dropdown css
-//End timer and record to leadboard
-
-//Deploy

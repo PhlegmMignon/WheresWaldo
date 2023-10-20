@@ -33,11 +33,11 @@ export default function ScorePrompt({
       .catch((err) => console.log("Err on score post" + err));
 
     //Updates scores with new highscore
-    getScores();
+    getScores(gameImage.name);
   };
 
   const updateHighscore = () => {
-    getScores();
+    getScores(gameImage.name);
     setIsHighscore(false);
   };
 

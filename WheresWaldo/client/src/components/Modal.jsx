@@ -15,7 +15,6 @@ export default function Modal({ modalFound, modal, setModal }) {
       ele.style.display = "block";
 
       let pos = ele.getBoundingClientRect();
-      console.log(pos);
       ele.style.left = pos.left - 30 + "px";
       ele.style.top = pos.top + 50 + "px";
 

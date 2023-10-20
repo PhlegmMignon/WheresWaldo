@@ -18,14 +18,12 @@ export default function DuringGame({
       updateTimer();
     }, [1000]);
 
-    getScores();
+    getScores(gameImage.name);
 
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    console.log(gameImage);
-
     //Makes image draggable
     let isDragged = false;
     let mouseDown = false;
