@@ -1,0 +1,133 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header unit tests > Renders header during game 1`] = `
+<div>
+  <div
+    class="flex justify-center items-center gap-6 bg-yellow-400 text-2xl text-center text-gray-900 p-2"
+  >
+    <div>
+      Find the characters! 
+    </div>
+    <ul
+      class="flex justify-between gap-6"
+    >
+      <li
+        class="text-lg"
+      >
+        <img
+          alt="picture ofzim"
+          class="h-16"
+          src="/src/assets/Zim.yelling.svg"
+        />
+        <div>
+          zim
+        </div>
+      </li>
+      <li
+        class="text-lg"
+      >
+        <img
+          alt="picture ofluffy"
+          class="h-16"
+          src="/src/assets/luffy.png"
+        />
+        <div>
+          luffy
+        </div>
+      </li>
+      <li
+        class="text-lg"
+      >
+        <img
+          alt="picture ofkon"
+          class="h-16"
+          src="/src/assets/kon.webp"
+        />
+        <div>
+          kon
+        </div>
+      </li>
+    </ul>
+    <div>
+      2
+      mins 
+      4
+      s
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Header unit tests > Renders header post game 1`] = `
+<div>
+  <div
+    class="flex justify-center items-center gap-6 bg-yellow-400 text-2xl text-center text-gray-900 p-2"
+  >
+    <div>
+      You found everyone! 
+    </div>
+    <li
+      class="flex justify-between gap-6"
+    >
+      <ul
+        class="text-lg"
+      >
+        <img
+          alt="picture ofzim"
+          class="h-16"
+          src="/src/assets/Zim.yelling.svg"
+        />
+        <div
+          class="line-through"
+        >
+          zim
+        </div>
+      </ul>
+      <ul
+        class="text-lg"
+      >
+        <img
+          alt="picture ofluffy"
+          class="h-16"
+          src="/src/assets/luffy.png"
+        />
+        <div
+          class="line-through"
+        >
+          luffy
+        </div>
+      </ul>
+      <ul
+        class="text-lg"
+      >
+        <img
+          alt="picture ofkon"
+          class="h-16"
+          src="/src/assets/kon.webp"
+        />
+        <div
+          class="line-through"
+        >
+          kon
+        </div>
+      </ul>
+    </li>
+    <div>
+      2
+      mins 
+      4
+      s
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Header unit tests > Renders stageSelect's header 1`] = `
+<div>
+  <div
+    class="bg-yellow-400 text-2xl text-center text-gray-900 p-6"
+  >
+    Pick a stage!
+  </div>
+</div>
+`;

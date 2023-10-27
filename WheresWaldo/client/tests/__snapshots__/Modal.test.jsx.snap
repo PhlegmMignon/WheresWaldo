@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Modal unit tests > Renders modal when character found is false 1`] = `
+<div>
+  <div
+    class="fixed text-center p-3 z-10 rounded-lg h-14 w-40"
+    id="modalParent"
+    style="background-color: rgb(255, 8, 0);"
+  >
+    <div
+      class="text-xl"
+      id="modal"
+    >
+      Try again
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Modal unit tests > Renders modal when character found is true 1`] = `
+<div>
+  <div
+    class="fixed text-center p-3 z-10 rounded-lg h-14 w-40"
+    id="modalParent"
+    style="background-color: rgb(50, 205, 50);"
+  >
+    <div
+      class="text-xl"
+      id="modal"
+    >
+      Success!
+    </div>
+  </div>
+</div>
+`;

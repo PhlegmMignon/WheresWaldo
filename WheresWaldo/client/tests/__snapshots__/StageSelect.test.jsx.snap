@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StageSelect unit tests > Renders stage select 1`] = `
+<div>
+  <div
+    class="flex flex-col flex-grow "
+  >
+    <div
+      class="bg-yellow-400 text-2xl text-center text-gray-900 p-6"
+    >
+      Pick a stage!
+    </div>
+    <div
+      class="flex flex-col items-center gap-4 p-12  "
+    >
+      <div
+        class="flex flex-col items-center text-xl max-w-2xl flex-grow min-h-full"
+      >
+        <img
+          alt="Picture of stage"
+          src="/src/assets/nMpQXwq.jpg"
+        />
+        <div
+          class="text-lg"
+        >
+          convention
+        </div>
+      </div>
+      <button
+        class="text-xl"
+      >
+        Start
+      </button>
+    </div>
+  </div>
+</div>
+`;

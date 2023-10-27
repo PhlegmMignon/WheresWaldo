@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Dropdown unit tests > Renders dropdown 1`] = `
+<div>
+  <div
+    class="absolute rounded-lg"
+    id="dropdown"
+    style="left: 1px; top: -109px;"
+  >
+    <li
+      class="list-none flex flex-col p-2 gap-2 "
+      id="charList"
+    >
+      <ul
+        class="flex justify-center"
+      >
+        <img
+          alt="image of zim"
+          class="h-16 w-auto"
+          id="char0"
+          src="/src/assets/Zim.yelling.svg"
+        />
+      </ul>
+      <ul
+        class="flex justify-center"
+      >
+        <img
+          alt="image of luffy"
+          class="h-16 w-auto"
+          id="char1"
+          src="/src/assets/luffy.png"
+        />
+      </ul>
+      <ul
+        class="flex justify-center"
+      >
+        <img
+          alt="image of kon"
+          class="h-16 w-auto"
+          id="char2"
+          src="/src/assets/kon.webp"
+        />
+      </ul>
+    </li>
+  </div>
+</div>
+`;

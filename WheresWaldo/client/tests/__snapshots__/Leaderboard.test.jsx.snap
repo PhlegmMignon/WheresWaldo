@@ -1,0 +1,75 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Leaderboard unit tests > Renders stage select 1`] = `
+<div>
+  <div
+    class="absolute inset-1/2 flex flex-col gap-3 h-72 w-60 rounded-xl p-6"
+    id="leaderboard"
+  >
+    <div
+      class="text-center text-lg "
+    >
+      Leaderboard
+    </div>
+    <div
+      class="flex justify-between"
+    >
+      <p>
+        Name
+      </p>
+       
+      <p
+        class="-ml-8"
+      >
+        Time
+      </p>
+    </div>
+    <ol>
+      <li
+        class="flex justify-between"
+      >
+        <div>
+          asd
+        </div>
+        <div>
+          3
+          mins 
+          32
+          secs
+        </div>
+      </li>
+      <li
+        class="flex justify-between"
+      >
+        <div>
+          qwe
+        </div>
+        <div>
+          1
+          mins 
+          20
+          secs
+        </div>
+      </li>
+      <li
+        class="flex justify-between"
+      >
+        <div>
+          zxc
+        </div>
+        <div>
+          2
+          mins 
+          3
+          secs
+        </div>
+      </li>
+    </ol>
+    <button
+      class="text-lg"
+    >
+      New game
+    </button>
+  </div>
+</div>
+`;
