@@ -1,0 +1,45 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ScorePrompt unit tests > Renders stage select 1`] = `
+<div>
+  <div
+    class="absolute inset-1/2 flex flex-col gap-8 p-4 h-56 w-56 rounded-lg"
+    id="scorePrompt"
+  >
+    <div
+      class="text-center text-lg"
+    >
+      A new highscore!
+    </div>
+    <form
+      action="/scores"
+      class="flex flex-col gap-2 "
+      method="post"
+    >
+      <label
+        for="name"
+      >
+        Name
+      </label>
+      <input
+        class="w-full"
+        name="name"
+        required=""
+        type="text"
+      />
+      <div
+        class="flex gap-14 mt-2.5 ml-7"
+      >
+        <button
+          type="submit"
+        >
+          Submit
+        </button>
+        <button>
+          Skip
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;

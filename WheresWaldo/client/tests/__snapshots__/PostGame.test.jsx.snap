@@ -1,36 +1,150 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PostGame unit tests > Renders stage select 1`] = `
+exports[`PostGame unit tests > Renders postgame when highscore is false 1`] = `
 <div>
   <div
-    class="flex flex-col flex-grow "
+    id="imageContainer"
   >
+    <img
+      alt="picture of convention"
+      id="image"
+    />
     <div
-      class="bg-yellow-400 text-2xl text-center text-gray-900 p-6"
-    >
-      Pick a stage!
-    </div>
-    <div
-      class="flex flex-col items-center gap-4 p-12  "
+      class="absolute inset-1/2 flex flex-col gap-3 h-72 w-60 rounded-xl p-6"
+      id="leaderboard"
     >
       <div
-        class="flex flex-col items-center text-xl max-w-2xl flex-grow min-h-full"
+        class="text-center text-lg "
       >
-        <img
-          alt="Picture of stage"
-          src="/src/assets/nMpQXwq.jpg"
+        Leaderboard
+      </div>
+      <div
+        class="flex justify-between"
+      >
+        <p>
+          Name
+        </p>
+         
+        <p
+          class="-ml-8"
+        >
+          Time
+        </p>
+      </div>
+      <ol>
+        <li
+          class="flex justify-between"
+        >
+          <div>
+            asd
+          </div>
+          <div>
+            5
+            secs
+          </div>
+        </li>
+        <li
+          class="flex justify-between"
+        >
+          <div>
+            aaa
+          </div>
+          <div>
+            5
+            secs
+          </div>
+        </li>
+        <li
+          class="flex justify-between"
+        >
+          <div>
+            sss
+          </div>
+          <div>
+            5
+            secs
+          </div>
+        </li>
+        <li
+          class="flex justify-between"
+        >
+          <div>
+            ddd
+          </div>
+          <div>
+            5
+            secs
+          </div>
+        </li>
+        <li
+          class="flex justify-between"
+        >
+          <div>
+            zzz
+          </div>
+          <div>
+            5
+            secs
+          </div>
+        </li>
+      </ol>
+      <button
+        class="text-lg"
+      >
+        New game
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PostGame unit tests > Renders postgame when highscore is true 1`] = `
+<div>
+  <div
+    id="imageContainer"
+  >
+    <img
+      alt="picture of convention"
+      id="image"
+    />
+    <div
+      class="absolute inset-1/2 flex flex-col gap-8 p-4 h-56 w-56 rounded-lg"
+      id="scorePrompt"
+    >
+      <div
+        class="text-center text-lg"
+      >
+        A new highscore!
+      </div>
+      <form
+        action="/scores"
+        class="flex flex-col gap-2 "
+        method="post"
+      >
+        <label
+          for="name"
+        >
+          Name
+        </label>
+        <input
+          class="w-full"
+          name="name"
+          required=""
+          type="text"
         />
         <div
-          class="text-lg"
+          class="flex gap-14 mt-2.5 ml-7"
         >
-          convention
+          <button
+            type="submit"
+          >
+            Submit
+          </button>
+          <button>
+            Skip
+          </button>
         </div>
-      </div>
-      <button
-        class="text-xl"
-      >
-        Start
-      </button>
+      </form>
     </div>
   </div>
 </div>
