@@ -89,9 +89,19 @@ export default function DuringGame({
     };
   }, [gameImage]);
 
+  const IMAGE_STYLE = {
+    maxWidth: gameImage.style[0],
+    height: gameImage.style[1],
+  };
+
   return (
     <div id="imageContainer">
-      <img id="image" src={gameImage.src} alt="picture of convention" />
+      <img
+        id="image"
+        src={gameImage.src}
+        alt="picture of convention"
+        style={IMAGE_STYLE}
+      />
       {modal ? (
         <Modal modalFound={modalFound} modal={modal} setModal={setModal} />
       ) : (

@@ -51,10 +51,10 @@ body,
   overflow: scroll;
 }
 
-#image {
+/* #image {
   max-width: max-content;
   height: max-content;
-}
+} */
 
 @layer components {
   #dropdown {
