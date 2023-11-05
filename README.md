@@ -9,6 +9,7 @@ Hosted with fly.io : WIP
 Change mongo url in client/App.jsx to mongodb+srv://dmah:hAtspcTWMGxbCOWv@cluster0.s65ys8c.mongodb.net/?retryWrites=true&w=majority
 
 npm run dev on WheresWaldo/client
+
 npm run serverStart on WheresWaldo/server
 
 You're up and going!
