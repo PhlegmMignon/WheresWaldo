@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function StageSelect({
   images,
@@ -7,10 +7,29 @@ export default function StageSelect({
   setInitialFound,
   setStartTime,
 }) {
+  const [selected, setSelected] = useState("");
+
+  useEffect(() => {
+    if (selected) {
+      let ele = document.getElementById(selected);
+      ele.classList.add("selected");
+
+      return () => {
+        ele.classList.remove("selected");
+      };
+    }
+  }, [selected]);
+
   const startGame = () => {
     setGameState("inProgress");
     setInitialFound();
     setStartTime(Date.now());
+  };
+
+  const handleClick = (image) => {
+    setGameImage(image);
+    let id = "image" + image.id;
+    setSelected(id);
   };
 
   return (
@@ -21,7 +40,8 @@ export default function StageSelect({
             <div
               key={image.id}
               className="flex flex-col items-center text-xl flex-grow "
-              onClick={() => setGameImage(image)}
+              onClick={() => handleClick(image)}
+              id={"image" + image.id}
             >
               <img
                 src={image.src}

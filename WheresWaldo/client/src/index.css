@@ -44,6 +44,12 @@ body,
   flex-grow: 1;
 }
 
+/* StageSelect image selected */
+.selected {
+  border: 4px solid;
+  border-color: rgb(250, 204, 21);
+}
+
 #imageContainer {
   position: relative;
   display: flex;
@@ -51,10 +57,10 @@ body,
   overflow: scroll;
 }
 
-/* #image {
+#image {
   max-width: max-content;
   height: max-content;
-} */
+}
 
 @layer components {
   #dropdown {
