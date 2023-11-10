@@ -19,14 +19,10 @@
     "build:css": "postcss ./public/stylesheets/tailwind.css -o ./public/stylesheets/output.css --watch"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PhlegmMignon/WheresWaldo.git"
+    "type": "git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PhlegmMignon/WheresWaldo/issues"
-  },
   "homepage": "https://github.com/PhlegmMignon/WheresWaldo#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
