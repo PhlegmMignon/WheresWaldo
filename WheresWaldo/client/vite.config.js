@@ -12,10 +12,7 @@ export default defineConfig({
       provider: "v8",
     },
   },
-  // server: {
-  //   watch: {
-  //     usePolling: true,
-  //   },
-  //   host: true,
-  // },
+  server: {
+    port: 3000,
+  },
 });

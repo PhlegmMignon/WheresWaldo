@@ -80,28 +80,18 @@ export default function DuringGame({
     });
 
     const handleClick = (e) => {
-      // e.preventDefault();
       let dim = e.target.getBoundingClientRect();
-      let x = e.pageX - dim.left;
-      let y = e.pageY - dim.top;
+      let x = e.clientX - dim.left;
+      let y = e.clientY - dim.top;
 
+      // console.log(x, y);
       setCoordinate([x, y]);
     };
   }, [gameImage]);
 
-  const IMAGE_STYLE = {
-    maxWidth: gameImage.style[0],
-    height: gameImage.style[1],
-  };
-
   return (
     <div id="imageContainer">
-      <img
-        id="image"
-        src={gameImage.src}
-        alt="picture of convention"
-        style={IMAGE_STYLE}
-      />
+      <img id="image" src={gameImage.src} alt="picture of convention" />
       {modal ? (
         <Modal modalFound={modalFound} modal={modal} setModal={setModal} />
       ) : (

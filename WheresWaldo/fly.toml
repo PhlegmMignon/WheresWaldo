@@ -1,13 +1,15 @@
-# fly.toml app configuration file generated for wheres-waldo-8123 on 2023-10-14T03:33:44-07:00
+# fly.toml app configuration file generated for whereswaldo8188 on 2023-11-09T19:37:41-08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "wheres-waldo-8123"
+app = "whereswaldo8188"
 primary_region = "lax"
 
+[build]
+
 [http_service]
-  internal_port = 8080
+  internal_port = 3000
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true

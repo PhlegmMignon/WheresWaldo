@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "devStart": "nodemon ./bin/www",
     "serverStart": "DEBUG=WheresWaldo:* npm run devStart",
-    "build:css": "postcss ./public/stylesheets/tailwind.css -o ./public/stylesheets/output.css --watch"
+    "build:css": "postcss ./public/stylesheets/tailwind.css -o ./public/stylesheets/output.css --watch",
+    "dev": "../client npm run dev"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
