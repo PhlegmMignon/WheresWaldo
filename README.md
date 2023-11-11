@@ -2,15 +2,11 @@
 
 ## Usage
 
-Hosted with fly.io : WIP
-
 ## Running locally
 
 Change mongo url in client/App.jsx to mongodb+srv://dmah:hAtspcTWMGxbCOWv@cluster0.s65ys8c.mongodb.net/?retryWrites=true&w=majority
 
-npm run dev on WheresWaldo/client
-
-npm run serverStart on WheresWaldo/server
+Go to directory where you see client and server folders and enter "npm run concurrent"
 
 You're up and going!
 
