@@ -48,6 +48,8 @@ router.post("/scores", [
 router.post(
   "/",
   asyncHandler(async (req, res) => {
+    console.log("checking");
+
     const char = await Character.findOne({
       map: req.body.map,
       name: req.body.charName,

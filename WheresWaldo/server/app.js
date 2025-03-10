@@ -14,11 +14,18 @@ const Score = require("./models/score.js");
 var indexRouter = require("./routes/index");
 
 var app = express();
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "", credentials: true }));
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Listening port ${PORT}`);
+});
 
 //Connects to mongodb
 mongoose.set("strictQuery", false);
 const mongoDB = process.env.MONGO_KEY;
+console.log(mongoDB);
+
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
