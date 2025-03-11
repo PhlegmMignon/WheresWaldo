@@ -14,9 +14,10 @@ const Score = require("./models/score.js");
 var indexRouter = require("./routes/index");
 
 var app = express();
-app.use(cors({ origin: "", credentials: true }));
+let allowedOrigins = ["http://localhost:5173", ""];
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 
-const PORT = 3000;
+const PORT = 3100;
 app.listen(PORT, () => {
   console.log(`Listening port ${PORT}`);
 });

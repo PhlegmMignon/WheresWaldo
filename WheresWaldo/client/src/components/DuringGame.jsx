@@ -31,6 +31,7 @@ export default function DuringGame({
     const slider = document.getElementById("imageContainer");
 
     const startDragging = (e) => {
+      e.preventDefault();
       isDragged = false;
       // console.log("dragging");
       mouseDown = true;
@@ -58,8 +59,8 @@ export default function DuringGame({
     };
 
     const stopDragging = () => {
-      // console.log("stopDrag");
       mouseDown = false;
+      // console.log("stopDrag");
     };
 
     slider.addEventListener("mousemove", move, false);
@@ -70,6 +71,8 @@ export default function DuringGame({
     //Dropdown controls
     let ele = document.getElementById("imageContainer");
     ele.addEventListener("mouseup", (e) => {
+      mouseDown = false;
+
       handleClick(e, slider);
 
       if (isDragged == false && mouseDown == false) {

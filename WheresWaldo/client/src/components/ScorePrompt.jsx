@@ -13,7 +13,7 @@ export default function ScorePrompt({
 
     const details = { name: name, score: time, map: gameImage.name };
 
-    fetch("http://localhost:3000/scores", {
+    fetch("http://localhost:3100/scores", {
       method: "POST",
       mode: "cors",
       credentials: "include",

@@ -24,7 +24,7 @@ export default function App() {
   const setFoundStatus = async (map, charName, coordinate, id) => {
     const details = { map, charName, coordinate, id };
 
-    fetch("http://localhost:3000/", {
+    fetch("http://localhost:3100/", {
       method: "POST",
       mode: "cors",
       credentials: "include",
@@ -61,7 +61,7 @@ export default function App() {
   const getScores = (map) => {
     const details = { map };
 
-    fetch("http://localhost:3000/getScores", {
+    fetch("http://localhost:3100/getScores", {
       method: "POST",
       mode: "cors",
       credentials: "include",
